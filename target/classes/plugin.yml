@@ -1,0 +1,79 @@
+main: me.bullyscraft.com.BullyPVP
+name: BullyPVP
+author: Rippin/RlPN
+version: 2.0
+description: The official KitPVP plugin used for the BullysCraft server.
+
+commands:
+  setspawn:
+    usage: /setspawn
+    description: Sets the spawn. Default to OP.
+  help:
+    usage: /help
+    description: Displays help info.
+  ?:
+    usage: /?
+    description: Displays help info.
+  kits:
+    usage: /kits
+    description: Displays the kits available.
+  kit:
+    usage: /kit <args>
+    description: Choose what kit you want.
+  refill:
+    usage: /refill
+    description: Refill your soup.
+  soup:
+    usage: /soup
+    description: Refill your soup.
+  powerups:
+    usage: /powerups
+    description: Displays the powerups info for your class.
+  buffs:
+    usage: /buffs
+    description: Displays the powerups info for your class.
+  protect:
+    usage: /protect
+    description: Increase protection on armor.
+  protection:
+    usage: /protection
+    description: Increase protection on armor.
+  sharpness:
+    usage: /sharpness
+    description: Increase sharpness on weapon.
+  sharp:
+    usage: /sharp
+    description: Increase sharpness on weapon.
+  power:
+    usage: /power
+    description: Increase power on bow.
+  pow:
+    usage: /pow
+    description: Increase power on bow.
+  knockback:
+    usage: /knockback
+    description: Increase knockback on weapon.
+  punch:
+    usage: /punch
+    description: Increase punch on weapon.
+  repair:
+    usage: /repair
+    description: Repair all armor and weapon.
+  fix:
+    usage: /fix
+    description: Repair all armor and weapon.
+  add:
+    usage: /add [name] [coins]
+    description: Add coins to a player.
+  speed:
+    usage: /speed
+    description: Add speed enchant to the player. 
+  strength:
+    usage: /strength
+    description: Add strength enchant to the player. 
+  stats:
+    usage: /stats or /stats [name]
+    description: View stats for the player.
+  top:
+    usage: /top
+    description: View top player stats.
