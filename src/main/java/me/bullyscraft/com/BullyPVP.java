@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
-
 import me.bullyscraft.com.Classes.KitManager;
 import me.bullyscraft.com.Listeners.ConsumeItemListener;
 import me.bullyscraft.com.Listeners.CustomHealthListener;
@@ -35,15 +33,6 @@ public class BullyPVP extends JavaPlugin {
  public final Logger logger = Logger.getLogger("Minecraft");
  public final String prefix = (ChatColor.DARK_RED + "[" + ChatColor.GOLD + "BullyPVP" + ChatColor.DARK_RED + "]" + ChatColor.RESET);
  public static HashMap<String, AssistHandler> damage = new HashMap<String, AssistHandler>();
-
- /*
- public  ConcurrentHashMap<String, Integer> coins = new ConcurrentHashMap<String, Integer>();
- public  ConcurrentHashMap<String, Integer> kills = new ConcurrentHashMap<String, Integer>();
- public  ConcurrentHashMap<String, Integer> deaths = new ConcurrentHashMap<String, Integer>();
- public  ConcurrentHashMap<String, Integer> highStreak = new ConcurrentHashMap<String, Integer>();
- public  ConcurrentHashMap<String, Integer> currentStreak = new ConcurrentHashMap<String, Integer>();
- public  ConcurrentHashMap<String, String> currentKit = new ConcurrentHashMap<String, String>();
- */
  public List<PlayerStatsObject> playerStats = new ArrayList<PlayerStatsObject>();
  private Connection c = null;
  public static BullyPVP instance;
