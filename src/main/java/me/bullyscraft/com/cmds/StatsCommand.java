@@ -4,7 +4,6 @@ import me.bullyscraft.com.BullyPVP;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
 import me.bullyscraft.com.Stats.ViewStats;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -27,10 +26,9 @@ public class StatsCommand extends CommandInterface {
 				ViewStats.viewStats((Player) sender, pso);
 
 			} else if (args.length == 1) {
-                Player player = Bukkit.getPlayerExact(args[0]);
-                if (player != null) {
+                PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(args[0], plugin);
+                if (pso != null) {
 
-                    PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(player, plugin);
 					ViewStats.viewStats((Player) sender, pso);
 				} else {
 					sender.sendMessage(ChatColor.RED
