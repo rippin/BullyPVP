@@ -11,7 +11,7 @@ import java.util.*;
 
 public class KitManager {
 
-private static List<Kit> allkits = new ArrayList<Kit>();
+public static List<Kit> getAllKits = new ArrayList<Kit>();
 private static Kit defaultKit;
 
 
@@ -24,13 +24,13 @@ public static void loadKits(BullyPVP plugin){
             System.out.println(" default kit is " + k.getName());
         }
 
-        allkits.add(k);
+        getAllKits.add(k);
         plugin.logger.info(k.getName() + " kit has been loaded from file");
 
     }
 }
  public static void reloadKits(BullyPVP plugin){
-     allkits.clear();
+     getAllKits.clear();
      for (String key : Config.getConfig().getConfigurationSection("Kits").getKeys(false)){
          Kit k = new Kit(key);
 
@@ -39,7 +39,7 @@ public static void loadKits(BullyPVP plugin){
              System.out.println(" default kit is " + k.getName());
          }
 
-         allkits.add(k);
+         getAllKits.add(k);
          plugin.logger.info(k.getName() + " kit has been loaded from file");
 
      }
@@ -65,7 +65,7 @@ public static Kit getKit(String name){
 
 
     public static List<Kit> getAllKits(){
-        return allkits;
+        return getAllKits;
     }
 
     public static void getBuffMessages(Player player, Kit kit){
