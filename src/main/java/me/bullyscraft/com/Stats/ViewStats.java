@@ -16,10 +16,11 @@ public class ViewStats {
 		int c = pso.getCurrentstreak();
         String name = pso.getUsername();
 
+
         sender.sendMessage(ChatColor.AQUA + "Stats for " + name);
 		sender.sendMessage(ChatColor.GREEN + "Kills: " + kills );
 		sender.sendMessage(ChatColor.GREEN + "Deaths: " + deaths );
-		sender.sendMessage(ChatColor.GREEN + "K/D: " + kd );
+		sender.sendMessage(ChatColor.GREEN + "K/D: " + String.format( "%.2f", kd));
 		sender.sendMessage(ChatColor.GREEN + "Highest Streak: " + s );
 		sender.sendMessage(ChatColor.GREEN + "Current Streak: " + c );
 		sender.sendMessage(ChatColor.GREEN + "Coins: " + coins);
