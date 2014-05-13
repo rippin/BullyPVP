@@ -19,4 +19,13 @@ public class PlayerStatsObjectManager {
         }
         return null;
     }
+
+    public static PlayerStatsObject getPSO(String name, BullyPVP plugin) {
+        for (PlayerStatsObject pso : plugin.playerStats){
+            if (pso.getUsername().equalsIgnoreCase(name)){
+                return pso;
+            }
+        }
+        return null;
+    }
 }
