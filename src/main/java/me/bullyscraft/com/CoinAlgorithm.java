@@ -53,7 +53,7 @@ public class CoinAlgorithm {
             PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(p, plugin);
             pso.addCoins(coins);
 			p.sendMessage(ChatColor.GREEN + "You received " + ChatColor.AQUA 
-					+ coins + ChatColor.GREEN  + " coins for doing " + ChatColor.GREEN + (percentage * 100) + "%" 
+					+ coins + ChatColor.GREEN  + " coins for doing " + ChatColor.GREEN + String.format( "%.3f",(percentage * 100)) + "%"
 					+ " of total damage to " + ChatColor.AQUA + dead);
 			}
 		}
