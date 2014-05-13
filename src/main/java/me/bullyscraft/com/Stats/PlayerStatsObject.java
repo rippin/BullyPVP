@@ -138,7 +138,8 @@ private Player player;
 
     public double getKd() {
      if (deaths != 0) {
-     return (double)(kills/deaths);
+
+         return ((double) (kills))/deaths;
      }
         else{
          return kills;
