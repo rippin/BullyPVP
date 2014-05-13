@@ -48,19 +48,6 @@ public class PlayerDeathListener implements Listener {
 			psoDead.setDeaths(++deadDeaths);
             psoKiller.setKills(++killerKills);
 
-			// set k/d plus solve division by zero
-			/*
-            if (deaths == 0) {
-				PlayerStats.setKD(dead, (double) deathsKills);
-			} else {
-				PlayerStats.setKD(dead, (deathsKills * 1.0) / deaths);
-			}
-			if (killsDeath == 0) {
-				PlayerStats.setKD(killer, (double) kills);
-			} else {
-				PlayerStats.setKD(killer, (kills * 1.0) / killsDeath);
-			}
-            */
 			// Set Streak
 			psoKiller.setCurrentstreak(++streak);
 			psoDead.setCurrentstreak(0);
