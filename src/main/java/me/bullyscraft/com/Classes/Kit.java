@@ -35,9 +35,13 @@ public class Kit {
 
     public Kit(String kitName) {
         this.kitName = kitName;
+        if (Config.getConfig().getString("Kits." + getName() + ".Weapon.Item") != null) {
         weapon = Config.getConfig().getString("Kits." + getName() + ".Weapon.Item").toUpperCase();
+        }
         weaponName = Config.getConfig().getString("Kits." + getName() + ".Weapon.Name");
+        if (Config.getConfig().getString("Kits." + getName() + ".Armor.Type") != null) {
         armorType = Config.getConfig().getString("Kits." + getName() + ".Armor.Type").toUpperCase();
+        }
         if (Config.getConfig().getStringList("Kits." + getName() + ".Items") != null) {
         items = Config.getConfig().getStringList("Kits." + getName() + ".Items");
         }
