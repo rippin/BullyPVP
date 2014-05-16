@@ -181,7 +181,7 @@ public class Buffs {
         } else if (buff.equalsIgnoreCase("STRENGTH")) {
             buff = "INCREASE_DAMAGE";
         } else if (buff.equalsIgnoreCase("INVISIBILITY")) {
-            buff = "INVISIBILITY ";
+            buff = "INVISIBILITY";
         } else if (buff.equalsIgnoreCase("JUMPBOOST")) {
             buff = "JUMP";
         } else if (buff.equalsIgnoreCase("NIGHT_VISION")) {
