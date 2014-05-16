@@ -6,6 +6,7 @@ import me.bullyscraft.com.Stats.PlayerStatsObject;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 
@@ -40,6 +41,9 @@ public class Wipe {
         }
         if (inv.contains(Material.getMaterial(k.getWeapon()))){
             inv.remove(Material.getMaterial(k.getWeapon()));
+        }
+        if (inv.getArmorContents() != null){
+            inv.setArmorContents(null);
         }
         if (k.getItems() != null) {
 
