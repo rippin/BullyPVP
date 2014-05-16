@@ -145,7 +145,7 @@ public class Kit {
                         @Override
                         public void run() {
                             player.addPotionEffect(new PotionEffect(PotionEffectType.getByName(Buffs.getOfficialPotionName(split[0])),
-                                    Integer.parseInt(split[1]), Integer.parseInt(split[2])));
+                                    Integer.parseInt(split[1]), Integer.parseInt(split[2]), true));
                         }
                     },1L);
 
