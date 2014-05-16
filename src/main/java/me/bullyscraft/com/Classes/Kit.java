@@ -101,7 +101,7 @@ public class Kit {
         return kitName;
     }
     public void giveKit(final Player player){
-
+        if (armorType != null) {
         ItemStack helm = new ItemStack(Material.getMaterial(armorType + "_HELMET"));
         ItemStack chest = new ItemStack(Material.getMaterial(armorType + "_CHESTPLATE"));
         ItemStack pants = new ItemStack(Material.getMaterial(armorType + "_LEGGINGS"));
@@ -112,9 +112,29 @@ public class Kit {
         armor.add(chest);
         armor.add(helm);
 
+            if (armorEnchants != null){
+                for (String s : armorEnchants) {
+                    if (s.contains(":")) {
+                        String[] split = s.split(":");
+                        Enchantment e = Enchantment.getByName(Buffs.getOfficialEnchantmentName(split[0].toUpperCase()));
+                        for (ItemStack i : armor) {
+                            i.addUnsafeEnchantment(e, Integer.parseInt(split[1]));
 
+                        }
+                    }
+                }
+            }
+                if (armorLore != null){
+                    for (ItemStack i : armor){
+                        ItemMeta meta = i.getItemMeta();
+                        armorLore = translateColorCodes(armorLore);
+                        meta.setLore(armorLore);
+                        i.setItemMeta(meta);
+                    }
+                }
+            player.getInventory().setArmorContents(armor.toArray(new ItemStack[4]));
 
-
+}
         ItemStack weap = new ItemStack(Material.getMaterial(weapon));
 
         if (potions != null){
@@ -145,18 +165,6 @@ public class Kit {
                 }
             }
 
-            if (armorEnchants != null){
-                for (String s : armorEnchants) {
-                    if (s.contains(":")) {
-                        String[] split = s.split(":");
-                        Enchantment e = Enchantment.getByName(Buffs.getOfficialEnchantmentName(split[0].toUpperCase()));
-                        for (ItemStack i : armor) {
-                            i.addUnsafeEnchantment(e, Integer.parseInt(split[1]));
-
-                        }
-                    }
-                }
-            }
             if (weaponLore != null){
                 ItemMeta meta = weap.getItemMeta();
                 weaponLore = translateColorCodes(weaponLore);
@@ -169,18 +177,8 @@ public class Kit {
             meta.setDisplayName(weaponName);
             weap.setItemMeta(meta);
         }
-            if (armorLore != null){
-                for (ItemStack i : armor){
-                    ItemMeta meta = i.getItemMeta();
-                    armorLore = translateColorCodes(armorLore);
-                    meta.setLore(armorLore);
-                    i.setItemMeta(meta);
-                }
-           }
 
-        player.getInventory().setArmorContents(armor.toArray(new ItemStack[4]));
-
-        player.getInventory().setItem(0, weap);
+       player.getInventory().setItem(0, weap);
 
         if (items != null){
             for (String s : items){
