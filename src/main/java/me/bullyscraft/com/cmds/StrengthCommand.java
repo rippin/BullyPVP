@@ -30,6 +30,10 @@ public class StrengthCommand extends CommandInterface {
                 String currentKit = pso.getKitClass();
                 Kit k = KitManager.getKit(currentKit);
                 String buff = "Strength";
+                if (k == null){
+                    player.sendMessage(ChatColor.RED + "It seems this kit was removed so no more buffs :(.");
+                    return;
+                }
                 if (k.getBuffsandPrice().containsKey(buff)) {
 
                     int s = pso.getCoins();

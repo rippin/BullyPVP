@@ -36,6 +36,16 @@ public class Wipe {
         PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(player, BullyPVP.instance);
 		String s = pso.getKitClass();
 	    Kit k = KitManager.getKit(s);
+        if (k == null){
+          for (ItemStack i: inv){
+            if (i != null){
+                if (i.getType() != Material.MUSHROOM_SOUP)
+                inv.remove(i);
+             }
+           }
+            inv.setArmorContents(null);
+            return;
+        }
         for(PotionEffect pe : player.getActivePotionEffects()){
             player.removePotionEffect(pe.getType());
         }
