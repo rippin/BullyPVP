@@ -3,8 +3,10 @@ package me.bullyscraft.com.MySQL;
 import com.jolbox.bonecp.BoneCP;
 import com.jolbox.bonecp.BoneCPConfig;
 import me.bullyscraft.com.BullyPVP;
+import me.bullyscraft.com.Config;
 
 
+import java.io.File;
 import java.sql.*;
 
 public class MySQL {
@@ -31,6 +33,7 @@ public class MySQL {
 
     private static void configureConnPool() {
         try {
+            if (Config.getConfig().getBoolean("MySQL.Enabled") != false) {
             Class.forName("com.mysql.jdbc.Driver"); //also you need the MySQL driver
             BoneCPConfig config = new BoneCPConfig();
             config.setJdbcUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database);
@@ -46,7 +49,24 @@ public class MySQL {
             System.out.println("contextInitialized.....Connection Pooling is configured");
             System.out.println("Total connections ==> " + connectionPool.getTotalCreatedConnections());
             MySQL.setConnectionPool(connectionPool);
+            }
+            else {
+                System.out.println("Using SQLite");
+                Class.forName("org.sqlite.JDBC"); //also you need the MySQL driver
+                BoneCPConfig config = new BoneCPConfig();
+                config.setJdbcUrl("jdbc:sqlite:" + plugin.getDataFolder().getAbsolutePath() + File.separator + "data.db");
+                config.setMinConnectionsPerPartition(8); //if you say 5 here, there will be 10 connection available
+                config.setMaxConnectionsPerPartition(20);
 
+                config.setPartitionCount(2); //2*5 = 10 connection will be available
+                config.setLazyInit(false);
+                //setting Lazy true means BoneCP won't open any connections before you request a one from it.
+                connectionPool = new BoneCP(config); // setup the connection pool
+                System.out.println("contextInitialized.....Connection Pooling is configured");
+                System.out.println("Total connections ==> " + connectionPool.getTotalCreatedConnections());
+                MySQL.setConnectionPool(connectionPool);
+
+            }
         } catch (Exception e) {
             e.printStackTrace(); //you should use exception wrapping on real-production code
         }

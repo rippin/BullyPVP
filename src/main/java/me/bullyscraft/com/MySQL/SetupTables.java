@@ -11,12 +11,20 @@ import java.util.*;
 
 public class SetupTables {
 
-    public static void createTableIfDoesntExist(BullyPVP plugin) {
+    public static void createTableIfDoesntExist() {
+        if (MySQL.getConnectionPool().getConfig().getJdbcUrl().contains("sqlite")){
+            MySQL.updateSQL("CREATE TABLE IF NOT EXISTS KitPVP ( Username VARCHAR(20) NOT NULL, " +
+                    "Coins int(20) NOT NULL DEFAULT '0', UUID VARCHAR(60) NOT NULL, Kills int(20) NOT NULL DEFAULT '0', " +
+                    "Deaths int(20) NOT NULL DEFAULT '0', HighStreak int(20) NOT NULL DEFAULT '0', " +
+                    "CurrentStreak int(20) NOT NULL DEFAULT '0', CurrentKit VARCHAR(20), PRIMARY KEY (UUID));");
+        }
+        else {
         MySQL.updateSQL("CREATE TABLE IF NOT EXISTS KitPVP (id int NOT NULL AUTO_INCREMENT, Username VARCHAR(20) NOT NULL, " +
                 "Coins int(20) NOT NULL DEFAULT '0', UUID VARCHAR(60) NOT NULL, Kills int(20) NOT NULL DEFAULT '0', " +
                 "Deaths int(20) NOT NULL DEFAULT '0', HighStreak int(20) NOT NULL DEFAULT '0', " +
                 "CurrentStreak int(20) NOT NULL DEFAULT '0', CurrentKit VARCHAR(20), PRIMARY KEY (id));");
-    }
+            }
+        }
 
 
     public static void cacheWholeDatabase(final BullyPVP plugin) {
@@ -53,14 +61,6 @@ public class SetupTables {
                       int currentstreak = r.getInt("CurrentStreak");
                       String currentkit = r.getString("CurrentKit");
                       String uuid = r.getString("UUID");
-                /*
-                      plugin.coins.put(username, coins);
-                      plugin.kills.put(username, kills);
-                      plugin.deaths.put(username, deaths);
-                      plugin.highStreak.put(username, highstreak);
-                      plugin.currentStreak.put(username, currentstreak);
-                      plugin.currentKit.put(username,currentkit);
-                */
                         PlayerStatsObject pso;
                         if (uuid != null) {
                         pso = new PlayerStatsObject(UUID.fromString(uuid));
@@ -86,10 +86,16 @@ public class SetupTables {
 
 
     public static void insertIntoTable(BullyPVP plugin, Player p, String kitname) {
+        if (MySQL.getConnectionPool().getConfig().getJdbcUrl().contains("sqlite")){
+            MySQL.updateSQL("INSERT OR IGNORE INTO KitPVP (Username, Kills, Deaths, Coins, HighStreak, CurrentStreak, CurrentKit, UUID)" +
+                    " VALUES ('" +p.getName() + "', 0, 0, 100, 0, 0, '" + kitname + "', '" + p.getUniqueId().toString() +"');");
+        }
+        else {
         MySQL.updateSQL("INSERT IGNORE INTO KitPVP SET Username = '" + p.getName() + "', Kills = 0, Deaths = 0, Coins = 100, HighStreak = 0," +
                 " CurrentStreak = 0, CurrentKit = '" + kitname +"', UUID = '" + p.getUniqueId().toString() + "' ;");
         plugin.getLogger().info("Added " + p.getName() + " into table.");
-    }
+        }
+      }
     public static PlayerStatsObject cacheNewPlayer(Player player, String defaultKit, BullyPVP plugin){
         String username = player.getName();
         UUID UUID = player.getUniqueId();
