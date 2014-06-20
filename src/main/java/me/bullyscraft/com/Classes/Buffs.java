@@ -68,16 +68,17 @@ public class Buffs {
             if (buff.equalsIgnoreCase("refill")) {
                 final String finalbuff = buff;
                 final Kit finalKit = k;
+                final String materialItem = Config.getConfig().getString("Kits." + finalKit.getName() + ".Buffs." + finalbuff + ".Material");
                 BullyPVP plugin = BullyPVP.instance;
-                player.sendMessage(ChatColor.RED + "Please wait 8 seconds for your soup to be delivered.");
+                player.sendMessage(ChatColor.RED + "Please wait 8 seconds for your items to be refilled.");
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
                     @Override
                     public void run() {
                         for (int i = 0; i < Config.getConfig().getInt("Kits." + finalKit.getName() + ".Buffs." + finalbuff + ".Amount"); i++) {
-                            if (player.getInventory().contains(Material.MUSHROOM_SOUP, 33)){
+                            if (player.getInventory().contains(Material.getMaterial(materialItem), 33)){
                                 break;
                             }
-                            player.getInventory().addItem(new ItemStack(Material.MUSHROOM_SOUP));
+                            player.getInventory().addItem(new ItemStack(Material.getMaterial(materialItem)));
                         }
                         player.sendMessage(ChatColor.GREEN + "Soup refilled.");
                     }

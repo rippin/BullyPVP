@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import rippin.bullyscraft.com.ArenaManager;
 
 public class EntityDamageByEntityListener implements Listener {
 
@@ -27,7 +28,13 @@ public class EntityDamageByEntityListener implements Listener {
 				&& event.getDamager() instanceof Player) {
 			Player player = (Player) event.getEntity();
 			Player damager = (Player) event.getDamager();
-			double i = 0;
+			if (plugin.isBully1v1Enabled()){
+                if (ArenaManager.isInArena(player)){
+                    return;
+                }
+            }
+
+            double i = 0;
 			//plugin.damage is the hashmap from the main class
 			//check if the player damaged is in the hashmap
 			if (!plugin.damage.containsKey(player.getName())) {

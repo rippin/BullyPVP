@@ -18,6 +18,71 @@ private UUID UUID;
 private String kitClass;
 private double kd;
 private Player player;
+private int wins1v1 = 0;
+private int losses1v1 = 0;
+private int currentStreak1v1 = 0;
+private int highStreak1v1 = 0;
+
+
+    public int getWins1v1() {
+        return wins1v1;
+    }
+
+    public void setWins1v1(int wins1v1) {
+        this.wins1v1 = wins1v1;
+        if (UUID != null) {
+            MySQL.updateSQL("UPDATE KitPVP SET Wins1v1 = " + wins1v1 + " WHERE UUID = '" + getUUID().toString() + "';");
+        }
+        else {
+            MySQL.updateSQL("UPDATE KitPVP SET Wins1v1 = " + wins1v1 + " WHERE Username = '" + getUsername() + "';");
+        }
+    }
+
+    public int getLosses1v1() {
+        return losses1v1;
+    }
+
+    public void setLosses1v1(int losses1v1) {
+        this.losses1v1 = losses1v1;
+
+        if (UUID != null) {
+            MySQL.updateSQL("UPDATE KitPVP SET Losses1v1 = " + losses1v1 + " WHERE UUID = '" + getUUID().toString() + "';");
+        }
+        else {
+            MySQL.updateSQL("UPDATE KitPVP SET Losses1v1 = " + losses1v1 + " WHERE Username = '" + getUsername() + "';");
+        }
+    }
+
+    public int getCurrentStreak1v1() {
+        return currentStreak1v1;
+    }
+
+    public void setCurrentStreak1v1(int currentStreak1v1) {
+        this.currentStreak1v1 = currentStreak1v1;
+
+        if (UUID != null) {
+            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak1v1 = " + currentStreak1v1 + " WHERE UUID = '" + getUUID().toString() + "';");
+        }
+        else {
+            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak1v1 = " + currentStreak1v1 + " WHERE Username = '" + getUsername() + "';");
+        }
+    }
+
+    public int getHighStreak1v1() {
+        return highStreak1v1;
+    }
+
+    public void setHighStreak1v1(int highStreak1v1) {
+        this.highStreak1v1 = highStreak1v1;
+
+        if (UUID != null) {
+            MySQL.updateSQL("UPDATE KitPVP SET HighStreak1v1 = " + highStreak1v1 + " WHERE UUID = '" + getUUID().toString() + "';");
+        }
+        else {
+            MySQL.updateSQL("UPDATE KitPVP SET HighStreak1v1 = " + highStreak1v1 + " WHERE Username = '" + getUsername() + "';");
+        }
+
+    }
 
     public PlayerStatsObject(UUID UUID){
        this.UUID = UUID;

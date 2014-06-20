@@ -2,6 +2,7 @@ package me.bullyscraft.com.Listeners;
 
 import me.bullyscraft.com.BullyPVP;
 
+import me.bullyscraft.com.MethodLibs;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.entity.Player;
@@ -26,7 +27,7 @@ private BullyPVP plugin;
 	String s = event.getMessage();
 	
 	if (s.charAt(0) != '/'){
-	event.setFormat(plugin.prefix + s);
+	event.setFormat(MethodLibs.prefix + s);
 	
 	}
 	

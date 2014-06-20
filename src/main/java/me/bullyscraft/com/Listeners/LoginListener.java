@@ -5,6 +5,7 @@ import me.bullyscraft.com.BullyScoreBoard;
 import me.bullyscraft.com.Classes.Kit;
 import me.bullyscraft.com.Classes.KitManager;
 import me.bullyscraft.com.Classes.RefillSoup;
+import me.bullyscraft.com.MethodLibs;
 import me.bullyscraft.com.MySQL.SetupTables;
 import me.bullyscraft.com.Classes.Wipe;
 import me.bullyscraft.com.Spawn;
@@ -16,6 +17,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import rippin.bullyscraft.com.Arena;
+import rippin.bullyscraft.com.ArenaManager;
+import rippin.bullyscraft.com.ArenaState;
 
 public class LoginListener implements Listener {
 
@@ -41,8 +46,7 @@ public class LoginListener implements Listener {
             pso = SetupTables.cacheNewPlayer(player,k.getName(),plugin);
 				plugin.logger.info("Creating MySQL entry for " + player.getName() + ".");
 
-            Bukkit.broadcastMessage(plugin.prefix + ChatColor.AQUA + " Welcome " + ChatColor.DARK_PURPLE +
-					player.getName() + ChatColor.AQUA + " to BullyPVP!");
+            Bukkit.broadcastMessage(MethodLibs.prefix + MethodLibs.newPlayerMessage(player));
 
             Wipe.wipe(player);
             k.giveKit(player);
@@ -54,6 +58,7 @@ public class LoginListener implements Listener {
             plugin.logger.info("UUID set for " + player.getName());
          }
      }
+
         pso.setPlayer(player);
         pso.setUsername(player.getName()); //Set username every join in case of name change.
 
@@ -63,9 +68,5 @@ public class LoginListener implements Listener {
 
 
 	}
-
-
-
-
 
 }

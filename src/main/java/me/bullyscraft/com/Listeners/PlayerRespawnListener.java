@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import rippin.bullyscraft.com.ArenaManager;
 
 public class PlayerRespawnListener implements Listener {
 
@@ -24,7 +25,12 @@ public class PlayerRespawnListener implements Listener {
 	@EventHandler
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
-
+        if (plugin.isBully1v1Enabled()){
+        if (ArenaManager.wasInArena(player)){
+            ArenaManager.getWasInArena().remove(player.getUniqueId().toString());
+            return;
+          }
+        }
 		event.setRespawnLocation(Spawn.getSpawnLoc());
 
 		player.teleport(Spawn.getSpawnLoc());
@@ -33,13 +39,11 @@ public class PlayerRespawnListener implements Listener {
         Kit k = KitManager.getKit(s);
            if (k != null){
                k.giveKit(player);
-               RefillSoup.soup(player);
                return;
            }
         else{
              Kit def = KitManager.getDefaultKit();
                 def.giveKit(player);
-               RefillSoup.soup(player);
 
            }
 

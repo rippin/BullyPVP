@@ -128,6 +128,7 @@ public class Kit {
                     for (ItemStack i : armor){
                         ItemMeta meta = i.getItemMeta();
                         armorLore = translateColorCodes(armorLore);
+
                         meta.setLore(armorLore);
                         i.setItemMeta(meta);
                     }
@@ -199,6 +200,106 @@ public class Kit {
         player.sendMessage(ChatColor.GREEN + "You have been given the " + getName() + " kit.");
         PlayerStatsObjectManager.getPSO(player, plugin).setKitClass(getName());
 
+    }
+
+    public void giveKit1v1(final Player player){
+        if (armorType != null) {
+            ItemStack helm = new ItemStack(Material.getMaterial(armorType + "_HELMET"));
+            ItemStack chest = new ItemStack(Material.getMaterial(armorType + "_CHESTPLATE"));
+            ItemStack pants = new ItemStack(Material.getMaterial(armorType + "_LEGGINGS"));
+            ItemStack boots = new ItemStack(Material.getMaterial(armorType + "_BOOTS"));
+            List<ItemStack> armor = new ArrayList<ItemStack>();
+            armor.add(boots);
+            armor.add(pants);
+            armor.add(chest);
+            armor.add(helm);
+
+            if (armorEnchants != null){
+                for (String s : armorEnchants) {
+                    if (s.contains(":")) {
+                        String[] split = s.split(":");
+                        Enchantment e = Enchantment.getByName(Buffs.getOfficialEnchantmentName(split[0].toUpperCase()));
+                        for (ItemStack i : armor) {
+                            i.addUnsafeEnchantment(e, Integer.parseInt(split[1]));
+
+                        }
+                    }
+                }
+            }
+            if (armorLore != null){
+                for (ItemStack i : armor){
+                    ItemMeta meta = i.getItemMeta();
+                    armorLore = translateColorCodes(armorLore);
+
+                    meta.setLore(armorLore);
+                    i.setItemMeta(meta);
+                }
+            }
+            player.getInventory().setArmorContents(armor.toArray(new ItemStack[4]));
+
+        }
+        ItemStack weap = new ItemStack(Material.getMaterial(weapon));
+
+        if (potions != null){
+            for (String s : potions) {
+                if (s.contains(":")) {
+                    final String[] split = s.split(":");
+                    plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+                        @Override
+                        public void run() {
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.getByName(Buffs.getOfficialPotionName(split[0])),
+                                    Integer.parseInt(split[1]), Integer.parseInt(split[2]), true));
+                        }
+                    },1L);
+
+
+                }
+            }
+        }
+
+        if (weaponEnchants != null) {
+            for (String s : weaponEnchants) {
+                if (s.contains(":")) {
+                    String[] split = s.split(":");
+                    Enchantment e = Enchantment.getByName(Buffs.getOfficialEnchantmentName(split[0].toUpperCase()));
+                    weap.addUnsafeEnchantment(e, Integer.parseInt(split[1]));
+
+                }
+            }
+        }
+
+        if (weaponLore != null){
+            ItemMeta meta = weap.getItemMeta();
+            weaponLore = translateColorCodes(weaponLore);
+            meta.setLore(weaponLore);
+            weap.setItemMeta(meta);
+        }
+        if (weaponName != null){
+            ItemMeta meta = weap.getItemMeta();
+            weaponName = ChatColor.translateAlternateColorCodes('&', weaponName);
+            meta.setDisplayName(weaponName);
+            weap.setItemMeta(meta);
+        }
+
+        player.getInventory().setItem(0, weap);
+
+        if (items != null){
+            for (String s : items){
+                if (s.contains(":")) {
+                    String[] split = s.split(":");
+                    ItemStack items = new ItemStack(Material.getMaterial(split[0].toUpperCase()), Integer.parseInt(split[1]));
+                    player.getInventory().addItem(items);
+                }
+                else {
+                    ItemStack items = new ItemStack(Material.getMaterial(s.toUpperCase()));
+                    player.getInventory().addItem(items);
+
+                }
+            }
+        }
+
+        player.updateInventory();
+        player.sendMessage(ChatColor.GREEN + "You have been given the " + getName() + " kit.");
     }
 
 

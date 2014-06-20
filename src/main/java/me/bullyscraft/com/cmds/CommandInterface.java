@@ -1,9 +1,6 @@
 package me.bullyscraft.com.cmds;
 
-
-
 import me.bullyscraft.com.BullyPVP;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 

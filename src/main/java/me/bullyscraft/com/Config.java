@@ -73,7 +73,7 @@ public class Config {
         getConfig().set("Kits.Example.NoPermMessage", "No Perm Message go here k");
         getConfig().set("Kits.Example.Armor.Type", "IRON");
         getConfig().set("Kits.Example.Armor.Enchants", armorEnchants);
-        getConfig().set("Kits.Example.Armorin.Lore", lore);
+        getConfig().set("Kits.Example.Armor.Lore", lore);
         getConfig().set("Kits.Example.Weapon.Item", "DIAMOND_SWORD");
         getConfig().set("Kits.Example.Weapon.Enchants", weaponEnchants);
         getConfig().set("Kits.Example.Weapon.Lore", lore2);
@@ -104,6 +104,8 @@ public class Config {
         getConfig().set("Kits.Example.Buffs.Knockback.Type", "Weapon-Enchantment");
         getConfig().set("Kits.Example.Buffs.Knockback.Description", "Buff Describe...");
         getConfig().set("Kits.Example.Buffs.Knockback.Max", 2);
+        getConfig().set("MySQL.Enabled", false);
+        getConfig().set("New-Player-Message", "Welcome");
 
     }
 	

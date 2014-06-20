@@ -24,18 +24,21 @@ import me.bullyscraft.com.Stats.TransferYmlToMySQL;
 import me.bullyscraft.com.cmds.KitPVPCommandExecutor;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import rippin.bullyscraft.com.KitPVP1v1;
 
 public class BullyPVP extends JavaPlugin {
 
  public final Logger logger = Logger.getLogger("Minecraft");
- public final String prefix = (ChatColor.DARK_RED + "[" + ChatColor.GOLD + "BullyPVP" + ChatColor.DARK_RED + "]" + ChatColor.RESET);
  public static HashMap<String, AssistHandler> damage = new HashMap<String, AssistHandler>();
+
  public List<PlayerStatsObject> playerStats = new ArrayList<PlayerStatsObject>();
  private Connection c = null;
  public static BullyPVP instance;
+ private Plugin Bully1v1;
 
 public void onEnable() {
     instance = this;
@@ -54,7 +57,7 @@ public void onEnable() {
         getServer().getPluginManager().disablePlugin(this);
         this.logger.info(pdfFile.getName() + " was disabled. MYSQL connection was not available.");
     }
-    SetupTables.createTableIfDoesntExist(this);
+    SetupTables.createTableIfDoesntExist();
     if (!Config.getConfig().getBoolean("Transferred-Stats")) {
         TransferYmlToMySQL.transfer(this);
         Config.getConfig().set("Transferred-Stats", true);
@@ -103,7 +106,7 @@ public void onEnable() {
 	this.getCommand("stats").setExecutor(new KitPVPCommandExecutor(this));
     this.getCommand("top").setExecutor(new KitPVPCommandExecutor(this));
 	
-	
+	Bully1v1 = getServer().getPluginManager().getPlugin("Bully1v1");
 	
 	logger.info(pdfFile.getName() + " Has Been Enabled");
 }
@@ -115,4 +118,12 @@ public void onEnable() {
     instance = null;
 }
 
+    public boolean isBully1v1Enabled(){
+       if (Bully1v1 == null){
+           return false;
+       }
+        else{
+           return true;
+       }
+    }
 }

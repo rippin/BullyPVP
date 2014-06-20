@@ -51,6 +51,10 @@ public class SetupTables {
                         addUUIDColumn(plugin);
                         plugin.logger.info("UUID Column has been created.");
                     }
+                        if (!columnList.contains("Wins1v1")){
+                            add1v1Columns(plugin);
+                            plugin.logger.info("1v1 Columns have been added.");
+                        }
 
                     while (r.next()) {
                       String username = r.getString("Username");
@@ -61,6 +65,12 @@ public class SetupTables {
                       int currentstreak = r.getInt("CurrentStreak");
                       String currentkit = r.getString("CurrentKit");
                       String uuid = r.getString("UUID");
+                      if (plugin.isBully1v1Enabled()){
+                          int wins1v1 = r.getInt("Wins1v1");
+                          int losses1v1 = r.getInt("Losses1v1");
+                          int currentStreak1v1 = r.getInt("CurrentStreak1v1");
+                          int highStreak1v1 = r.getInt("HighStreak1v1");
+                      }
                         PlayerStatsObject pso;
                         if (uuid != null) {
                         pso = new PlayerStatsObject(UUID.fromString(uuid));
@@ -69,7 +79,7 @@ public class SetupTables {
                           pso = new PlayerStatsObject(username);
                         }
 
-                        pso.setUp(kills,deaths,coins,currentstreak, highstreak, username, currentkit);
+                        pso.setUp(kills, deaths, coins, currentstreak, highstreak, username, currentkit);
 
                         plugin.playerStats.add(pso);
 
@@ -87,13 +97,30 @@ public class SetupTables {
 
     public static void insertIntoTable(BullyPVP plugin, Player p, String kitname) {
         if (MySQL.getConnectionPool().getConfig().getJdbcUrl().contains("sqlite")){
-            MySQL.updateSQL("INSERT OR IGNORE INTO KitPVP (Username, Kills, Deaths, Coins, HighStreak, CurrentStreak, CurrentKit, UUID)" +
-                    " VALUES ('" +p.getName() + "', 0, 0, 100, 0, 0, '" + kitname + "', '" + p.getUniqueId().toString() +"');");
+            if (plugin.isBully1v1Enabled()){
+                MySQL.updateSQL("INSERT OR IGNORE INTO KitPVP (Username, Kills, Deaths, Coins, HighStreak, CurrentStreak, CurrentKit, " +
+                        "UUID, Wins1v1, Losses1v1, HighStreak1v1, CurrentStreak1v1)" +
+                        " VALUES ('" +p.getName() + "', '0', '0', '100', '0', '0', '" + kitname + "', '" + p.getUniqueId().toString()
+                        +"', '0', '0', '0', '0');");
+            }
+            else {
+                MySQL.updateSQL("INSERT OR IGNORE INTO KitPVP (Username, Kills, Deaths, Coins, HighStreak, CurrentStreak, CurrentKit, UUID)" +
+                        " VALUES ('" +p.getName() + "', '0', '0', '100', '0', '0', '" + kitname + "', '" + p.getUniqueId().toString() +"');");
+                }
+
         }
         else {
-        MySQL.updateSQL("INSERT IGNORE INTO KitPVP SET Username = '" + p.getName() + "', Kills = 0, Deaths = 0, Coins = 100, HighStreak = 0," +
-                " CurrentStreak = 0, CurrentKit = '" + kitname +"', UUID = '" + p.getUniqueId().toString() + "' ;");
+        if (plugin.isBully1v1Enabled()){
+            MySQL.updateSQL("INSERT IGNORE INTO KitPVP SET Username = '" + p.getName() + "', Kills = 0, Deaths = 0, Coins = 100, HighStreak = 0," +
+                    " CurrentStreak = 0, CurrentKit = '" + kitname +"', UUID = '"
+                    + p.getUniqueId().toString() + "', Wins1v1 = 0, Losses1v1 = 0, HighStreak1v1 = 0, CurrentStreak1v1 = 0;");
+            plugin.getLogger().info("Added " + p.getName() + " into table.");
+        }
+       else {
+       MySQL.updateSQL("INSERT IGNORE INTO KitPVP SET Username = '" + p.getName() + "', Kills = 0, Deaths = 0, Coins = 100, HighStreak = 0," +
+                " CurrentStreak = 0, CurrentKit = '" + kitname +"', UUID = '" + p.getUniqueId().toString() + "';");
         plugin.getLogger().info("Added " + p.getName() + " into table.");
+            }
         }
       }
     public static PlayerStatsObject cacheNewPlayer(Player player, String defaultKit, BullyPVP plugin){
@@ -108,6 +135,12 @@ public class SetupTables {
         pso.setHigheststreak(0);
         pso.setCurrentstreak(0);
         pso.setKitClass(defaultKit);
+        if (plugin.isBully1v1Enabled()){
+        pso.setWins1v1(0);
+        pso.setLosses1v1(0);
+        pso.setHighStreak1v1(0);
+        pso.setCurrentStreak1v1(0);
+        }
        plugin.playerStats.add(pso);
         return pso;
     }
@@ -348,6 +381,14 @@ public class SetupTables {
     public static void addUUIDColumn(final BullyPVP plugin){
 
                MySQL.updateSQL("ALTER TABLE KitPVP ADD UUID VARCHAR(60) AFTER Username;");
+    }
+
+    public static void add1v1Columns(final BullyPVP plugin){
+        MySQL.updateSQL("ALTER TABLE KitPVP ADD Wins1v1 int(20) NOT NULL DEFAULT '0';");
+        MySQL.updateSQL("ALTER TABLE KitPVP ADD Losses1v1 int(20) NOT NULL DEFAULT '0';");
+        MySQL.updateSQL("ALTER TABLE KitPVP ADD HighStreak1v1 int(20) NOT NULL DEFAULT '0';");
+        MySQL.updateSQL("ALTER TABLE KitPVP ADD CurrentStreak1v1 int(20) NOT NULL DEFAULT '0';");
+
     }
     public static void transferUUID(final BullyPVP plugin){
        System.out.println("Attempting to begin the transfer.");

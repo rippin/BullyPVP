@@ -20,34 +20,19 @@ public class AddCommand extends CommandInterface {
 	public void executeCommand(CommandSender sender, Command cmd, String[] args) {
 		CommandHelper helper = new CommandHelper(sender, cmd);
 		if (args.length == 2) {
-			if (sender instanceof Player) {
-				Player player = (Player) sender;
-				if (player.isOp()) {
-					Player p = Bukkit.getPlayerExact(args[0]);
+				if (sender.isOp()) {
+                    PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(args[0], plugin);
 
-					if (p != null) {
-                        PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(p, plugin);
+					if (pso != null) {
                         int amount = Integer.parseInt(args[1]);
 						pso.addCoins(amount);
 					} else {
-						player.sendMessage(ChatColor.RED
-								+ "User file not found, spelling error? Or is player not online?");
+						sender.sendMessage(ChatColor.RED
+								+ "User file not found, spelling error?");
 					}
 				} else {
 					helper.noPermission();
 				}
-			} else {
-				Player p = Bukkit.getPlayerExact(args[0]);
-				if (p != null) {
-                    PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(p, plugin);
-                    int amount = Integer.parseInt(args[1]);
-                    pso.addCoins(amount);
-				} else {
-					sender.sendMessage(ChatColor.RED
-							+ "User file not found, spelling error? Or is player not online?");
-				}
-
-			}
 		} else {
 			helper.wrongArguments();
 		}

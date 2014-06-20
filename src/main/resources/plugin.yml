@@ -3,6 +3,7 @@ name: BullyPVP
 author: Rippin/RlPN
 version: 2.0
 description: The official KitPVP plugin used for the BullysCraft server.
+softdepend: [Bully1v1]
 
 commands:
   setspawn:

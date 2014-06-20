@@ -7,8 +7,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import rippin.bullyscraft.com.ArenaManager;
 
 public class PlayerDeathListener implements Listener {
 
@@ -22,7 +24,8 @@ public class PlayerDeathListener implements Listener {
 	@SuppressWarnings("static-access")
 	@EventHandler
 	public void playerDeathEvent(PlayerDeathEvent event) {
-		if (event.getEntity() instanceof Player
+
+        if (event.getEntity() instanceof Player
 				&& event.getEntity().getKiller() instanceof Player) {
 
 			// Getting the killer and player that died from the event.
@@ -32,6 +35,13 @@ public class PlayerDeathListener implements Listener {
             PlayerStatsObject psoDead = PlayerStatsObjectManager.getPSO(dead, plugin);
             PlayerStatsObject psoKiller = PlayerStatsObjectManager.getPSO(killer, plugin);
 
+            //set stats for 1v1
+            if (plugin.isBully1v1Enabled()){
+                if (ArenaManager.isInArena(event.getEntity())){
+                    event.setDeathMessage(null);
+                   return;
+                }
+            }
 			
 
 			event.setDeathMessage(null);
@@ -146,16 +156,22 @@ public class PlayerDeathListener implements Listener {
 
 	}
 
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGH)
 	public void playerDeathNoKiller(PlayerDeathEvent event) {
 
 		if (event.getEntity() instanceof Player
 				&& event.getEntity().getKiller() == null) {
 			Player dead = event.getEntity();
             PlayerStatsObject psoDead = PlayerStatsObjectManager.getPSO(dead, plugin);
-			int deaths = psoDead.getDeaths();
+            if (plugin.isBully1v1Enabled()){
+                if (ArenaManager.isInArena(dead)){
+                    return;
+                }
+               }
+            int deaths = psoDead.getDeaths();
 			psoDead.setDeaths(++deaths);
             psoDead.setCurrentstreak(0);
+
 
             BullyScoreBoard b1 = new BullyScoreBoard(dead, psoDead);
             b1.setUp();

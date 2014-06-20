@@ -4,11 +4,7 @@ import me.bullyscraft.com.Stats.PlayerStatsObject;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.*;
 
 public class BullyScoreBoard {
 
@@ -21,6 +17,10 @@ public class BullyScoreBoard {
  private Score coins;	
  private Score highStreak;
  private Score streak;
+ private Score wins1v1;
+ private Score losses1v1;
+ private Score currentStreak1v1;
+ private Score highStreak1v1;
  private BullyPVP plugin;
  private PlayerStatsObject pso;
 
@@ -37,6 +37,15 @@ public class BullyScoreBoard {
 	streak = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Streak:"));
 	highStreak = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "High Streak:"));
     plugin = BullyPVP.instance;
+    if (plugin.isBully1v1Enabled()){
+        Team bypass = board.registerNewTeam("bypass");
+        bypass.setPrefix(ChatColor.GREEN + "1v1 ");
+        wins1v1 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "1v1 Wins:"));
+        losses1v1 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "1v1 Losses:"));
+        currentStreak1v1 = objective.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "1v1 Streak:"));
+        highStreak1v1 = objective.getScore(Bukkit.getOfflinePlayer("HighStreak:"));
+        bypass.addPlayer(Bukkit.getOfflinePlayer("HighStreak:"));
+    }
     this.pso = pso;
 	
 	
@@ -49,7 +58,13 @@ public class BullyScoreBoard {
 	kills.setScore(pso.getKills());
 	streak.setScore(pso.getCurrentstreak());
 	highStreak.setScore(pso.getHigheststreak());
-	player.setScoreboard(board);
+	if (plugin.isBully1v1Enabled()){
+        wins1v1.setScore(pso.getWins1v1());
+        losses1v1.setScore(pso.getLosses1v1());
+        highStreak1v1.setScore(pso.getHighStreak1v1());
+        currentStreak1v1.setScore(pso.getCurrentStreak1v1());
+    }
+    player.setScoreboard(board);
 	
 	
  	}
@@ -61,6 +76,12 @@ public class BullyScoreBoard {
         kills.setScore(pso.getKills());
         streak.setScore(pso.getCurrentstreak());
         highStreak.setScore(pso.getHigheststreak());
+        if (plugin.isBully1v1Enabled()){
+            wins1v1.setScore(pso.getWins1v1());
+            losses1v1.setScore(pso.getLosses1v1());
+            highStreak1v1.setScore(pso.getHighStreak1v1());
+            currentStreak1v1.setScore(pso.getCurrentStreak1v1());
+        }
         player.setScoreboard(board);
 	
 	}
