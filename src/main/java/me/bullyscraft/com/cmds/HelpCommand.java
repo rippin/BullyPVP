@@ -25,6 +25,9 @@ public class HelpCommand extends CommandInterface {
 			sender.sendMessage(ChatColor.GOLD + "/kit <kit name>" + ChatColor.RED + " to obtain a kit");
             sender.sendMessage(ChatColor.GOLD + "/stats <name>" + ChatColor.RED + " show stats of the player.");
             sender.sendMessage(ChatColor.GOLD + "/top" + ChatColor.RED + " show top stats of the server.");
+            if (plugin.isBully1v1Enabled()){
+                sender.sendMessage(ChatColor.GOLD + "/1v1" + ChatColor.RED + " view all 1v1 commands.");
+            }
 			//top commands here
 		}
         else if (args.length == 1){

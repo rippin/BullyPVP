@@ -57,6 +57,7 @@ public void onEnable() {
         getServer().getPluginManager().disablePlugin(this);
         this.logger.info(pdfFile.getName() + " was disabled. MYSQL connection was not available.");
     }
+    Bully1v1 = getServer().getPluginManager().getPlugin("Bully1v1");
     SetupTables.createTableIfDoesntExist();
     if (!Config.getConfig().getBoolean("Transferred-Stats")) {
         TransferYmlToMySQL.transfer(this);
@@ -105,8 +106,8 @@ public void onEnable() {
 	this.getCommand("strength").setExecutor(new KitPVPCommandExecutor(this));
 	this.getCommand("stats").setExecutor(new KitPVPCommandExecutor(this));
     this.getCommand("top").setExecutor(new KitPVPCommandExecutor(this));
-	
-	Bully1v1 = getServer().getPluginManager().getPlugin("Bully1v1");
+    if (Bully1v1 != null)
+        logger.info("Bully1v1 has been found.");
 	
 	logger.info(pdfFile.getName() + " Has Been Enabled");
 }

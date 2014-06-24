@@ -259,5 +259,20 @@ private int highStreak1v1 = 0;
         this.kitClass = kitClass;
     }
 
+    public void setUp(int kills, int deaths, int coins, int cs, int hs, String username, String kitClass, int wins1v1, int losses1v1, int currentStreak1v1, int highStreak1v1){
+        this.kills = kills;
+        this.deaths = deaths;
+        this.coins = coins;
+        this.currentstreak = cs;
+        this.higheststreak = hs;
+        this.username = username;
+        this.kitClass = kitClass;
+        this.wins1v1 = wins1v1;
+        this.losses1v1 = losses1v1;
+        this.currentStreak1v1 = currentStreak1v1;
+        this.highStreak1v1 = highStreak1v1;
+
+    }
+
 
 }

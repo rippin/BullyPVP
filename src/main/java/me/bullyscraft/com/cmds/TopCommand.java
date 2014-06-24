@@ -28,7 +28,12 @@ public class TopCommand extends CommandInterface {
                 sender.sendMessage(ChatColor.GOLD + "/top coins" + ChatColor.RED + " View Top 10 Coins.");
                 sender.sendMessage(ChatColor.GOLD + "/top currentstreak" + ChatColor.RED + " View Top 10 Current Kill Streaks.");
                 sender.sendMessage(ChatColor.GOLD + "/top higheststreak" + ChatColor.RED + " View Top 10 Highest Kill Streaks.");
-
+                if (plugin.isBully1v1Enabled()){
+                    sender.sendMessage(ChatColor.GOLD + "/top 1v1wins" + ChatColor.RED + " View Top 10 1v1 Wins.");
+                    sender.sendMessage(ChatColor.GOLD + "/top 1v1losses" + ChatColor.RED + " View Top 10 1v1 Losses.");
+                    sender.sendMessage(ChatColor.GOLD + "/top 1v1currentstreak" + ChatColor.RED + " View Top 10 1v1 Current Win Streaks.");
+                    sender.sendMessage(ChatColor.GOLD + "/top 1v1higheststreak" + ChatColor.RED + " View Top 10 1v1 Highest Win Streaks.");
+                }
             } else if (args.length == 1) {
                if (args[0].equalsIgnoreCase("kills")){
                    SetupTables.top10Kills(plugin, sender);
@@ -46,6 +51,20 @@ public class TopCommand extends CommandInterface {
                    SetupTables.top10HighestStreak(plugin, sender);
                }
 
+              else if (plugin.isBully1v1Enabled()) {
+               if (args[0].equalsIgnoreCase("1v1wins")){
+                   SetupTables.top101v1Wins(plugin, sender);
+               }
+               else if (args[0].equalsIgnoreCase("1v1losses")){
+                   SetupTables.top101v1Losses(plugin, sender);
+               }
+               else if (args[0].equalsIgnoreCase("1v1higheststreak")){
+                   SetupTables.top101v1HighestStreak(plugin, sender);
+               }
+               else if (args[0].equalsIgnoreCase("1v1currentstreak")){
+                   SetupTables.top101v1CurrentStreak(plugin, sender);
+               }
+             }
             }
 
             else {

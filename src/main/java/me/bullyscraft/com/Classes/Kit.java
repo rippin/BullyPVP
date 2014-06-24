@@ -297,7 +297,7 @@ public class Kit {
                 }
             }
         }
-
+        RefillSoup.soup(player);
         player.updateInventory();
         player.sendMessage(ChatColor.GREEN + "You have been given the " + getName() + " kit.");
     }

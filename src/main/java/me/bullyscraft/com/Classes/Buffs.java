@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import rippin.bullyscraft.com.ArenaManager;
 
 public class Buffs {
 
@@ -69,11 +70,17 @@ public class Buffs {
                 final String finalbuff = buff;
                 final Kit finalKit = k;
                 final String materialItem = Config.getConfig().getString("Kits." + finalKit.getName() + ".Buffs." + finalbuff + ".Material");
-                BullyPVP plugin = BullyPVP.instance;
+                final BullyPVP plugin = BullyPVP.instance;
                 player.sendMessage(ChatColor.RED + "Please wait 8 seconds for your items to be refilled.");
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
                     @Override
                     public void run() {
+                        if (plugin.isBully1v1Enabled()){
+                            if (ArenaManager.isInArena(player)){
+                                player.sendMessage(ChatColor.RED + " No glitching to get soup in a 1v1.");
+                                return;
+                            }
+                        }
                         for (int i = 0; i < Config.getConfig().getInt("Kits." + finalKit.getName() + ".Buffs." + finalbuff + ".Amount"); i++) {
                             if (player.getInventory().contains(Material.getMaterial(materialItem), 33)){
                                 break;

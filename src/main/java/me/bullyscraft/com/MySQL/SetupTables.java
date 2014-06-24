@@ -65,13 +65,7 @@ public class SetupTables {
                       int currentstreak = r.getInt("CurrentStreak");
                       String currentkit = r.getString("CurrentKit");
                       String uuid = r.getString("UUID");
-                      if (plugin.isBully1v1Enabled()){
-                          int wins1v1 = r.getInt("Wins1v1");
-                          int losses1v1 = r.getInt("Losses1v1");
-                          int currentStreak1v1 = r.getInt("CurrentStreak1v1");
-                          int highStreak1v1 = r.getInt("HighStreak1v1");
-                      }
-                        PlayerStatsObject pso;
+                       PlayerStatsObject pso;
                         if (uuid != null) {
                         pso = new PlayerStatsObject(UUID.fromString(uuid));
                         }
@@ -79,8 +73,17 @@ public class SetupTables {
                           pso = new PlayerStatsObject(username);
                         }
 
+                        if (plugin.isBully1v1Enabled()){
+                            int wins1v1 = r.getInt("Wins1v1");
+                            int losses1v1 = r.getInt("Losses1v1");
+                            int currentStreak1v1 = r.getInt("CurrentStreak1v1");
+                            int highStreak1v1 = r.getInt("HighStreak1v1");
+                            pso.setUp(kills, deaths, coins, currentstreak, highstreak, username, currentkit, wins1v1, losses1v1, currentStreak1v1, highStreak1v1);
+                        }
+                        else {
                         pso.setUp(kills, deaths, coins, currentstreak, highstreak, username, currentkit);
 
+                        }
                         plugin.playerStats.add(pso);
 
                     }
@@ -192,6 +195,199 @@ public class SetupTables {
 
         });
     }
+
+    public static void top101v1Wins(final BullyPVP plugin, final CommandSender player) {
+        final String query = "SELECT * FROM KitPVP ORDER BY Wins1v1 DESC LIMIT 10";
+
+        plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
+
+            @Override
+            public void run() {
+
+                try {
+                    Connection c = null;
+
+                    c = MySQL.getConnection();
+
+
+                    PreparedStatement s = c.prepareStatement(query);
+                    final ResultSet r = s.executeQuery();
+
+                    try {
+                        player.sendMessage(ChatColor.GOLD + "========" + ChatColor.RED + " TOP 10 1v1 WINS" + ChatColor.GOLD + "========");
+                        while (r.next()) {
+                            int wins = 0;
+                            String name = null;
+                            wins = r.getInt("Wins1v1");
+                            name = r.getString("Username");
+
+
+                            player.sendMessage(ChatColor.AQUA + name + ChatColor.GREEN + " Wins : " + wins);
+
+
+                        }
+
+                    } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    MySQL.closeResultSet(r);
+                    MySQL.closePreparedStatement(s);
+                    MySQL.closeConnection(c);
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        });
+    }
+
+    public static void top101v1Losses(final BullyPVP plugin, final CommandSender player) {
+        final String query = "SELECT * FROM KitPVP ORDER BY Losses1v1 DESC LIMIT 10";
+
+        plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
+
+            @Override
+            public void run() {
+
+                try {
+                    Connection c = null;
+
+                    c = MySQL.getConnection();
+
+
+                    PreparedStatement s = c.prepareStatement(query);
+                    final ResultSet r = s.executeQuery();
+
+                    try {
+                        player.sendMessage(ChatColor.GOLD + "========" + ChatColor.RED + " TOP 10 1v1 LOSSES" + ChatColor.GOLD + "========");
+                        while (r.next()) {
+                            int wins = 0;
+                            String name = null;
+                            wins = r.getInt("Losses1v1");
+                            name = r.getString("Username");
+
+
+                            player.sendMessage(ChatColor.AQUA + name + ChatColor.GREEN + " Losses : " + wins);
+
+
+                        }
+
+                    } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    MySQL.closeResultSet(r);
+                    MySQL.closePreparedStatement(s);
+                    MySQL.closeConnection(c);
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        });
+    }
+
+    public static void top101v1CurrentStreak(final BullyPVP plugin, final CommandSender player) {
+        final String query = "SELECT * FROM KitPVP ORDER BY CurrentStreak1v1 DESC LIMIT 10";
+
+        plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
+
+            @Override
+            public void run() {
+
+                try {
+                    Connection c = null;
+
+                    c = MySQL.getConnection();
+
+
+                    PreparedStatement s = c.prepareStatement(query);
+                    final ResultSet r = s.executeQuery();
+
+                    try {
+                        player.sendMessage(ChatColor.GOLD + "========" + ChatColor.RED + " TOP 10 1v1 Streaks" + ChatColor.GOLD + "========");
+                        while (r.next()) {
+                            int wins = 0;
+                            String name = null;
+                            wins = r.getInt("CurrentStreak1v1");
+                            name = r.getString("Username");
+
+
+                            player.sendMessage(ChatColor.AQUA + name + ChatColor.GREEN + " Streak : " + wins);
+
+
+                        }
+
+                    } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    MySQL.closeResultSet(r);
+                    MySQL.closePreparedStatement(s);
+                    MySQL.closeConnection(c);
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        });
+    }
+
+    public static void top101v1HighestStreak(final BullyPVP plugin, final CommandSender player) {
+        final String query = "SELECT * FROM KitPVP ORDER BY HighStreak1v1 DESC LIMIT 10";
+
+        plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
+
+            @Override
+            public void run() {
+
+                try {
+                    Connection c = null;
+
+                    c = MySQL.getConnection();
+
+
+                    PreparedStatement s = c.prepareStatement(query);
+                    final ResultSet r = s.executeQuery();
+
+                    try {
+                        player.sendMessage(ChatColor.GOLD + "========" + ChatColor.RED + " TOP 10 1v1 Highest Streaks" + ChatColor.GOLD + "========");
+                        while (r.next()) {
+                            int wins = 0;
+                            String name = null;
+                            wins = r.getInt("HighStreak1v1");
+                            name = r.getString("Username");
+
+
+                            player.sendMessage(ChatColor.AQUA + name + ChatColor.GREEN + " Highest Streak : " + wins);
+
+
+                        }
+
+                    } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    MySQL.closeResultSet(r);
+                    MySQL.closePreparedStatement(s);
+                    MySQL.closeConnection(c);
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        });
+    }
+
 
     public static void top10Deaths(final BullyPVP plugin, final CommandSender player) {
         final String query = "SELECT * FROM KitPVP ORDER BY Deaths DESC LIMIT 10";

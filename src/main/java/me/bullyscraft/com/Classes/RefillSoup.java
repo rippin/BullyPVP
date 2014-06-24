@@ -32,7 +32,7 @@ public class RefillSoup {
 		for (int i = 0; i < 15; i++) {
 
 			inv.addItem(soup);
-
+            player.updateInventory();
 		}
 
 	}
