@@ -27,6 +27,7 @@ public class Kit {
     private List<String> armorEnchants = new ArrayList<String>();
     private List<String> armorLore = new ArrayList<String>();
     private List<String> potions = new ArrayList<String>();
+    private List<ItemStack> armorItems = new ArrayList<ItemStack>();
     private String kitType;
     private String kitNoPerms;
     private String kitDescription;
@@ -53,6 +54,9 @@ public class Kit {
         kitNoPerms = Config.getConfig().getString("Kits." + getName() + ".NoPermsMessage");
         kitDescription = Config.getConfig().getString("Kits." + getName() + ".Description");
         potions = Config.getConfig().getStringList("Kits." + getName() + ".Potions");
+        if (KitManager.getArmor(kitName) != null) {
+        armorItems = KitManager.getArmor(kitName);
+        }
         plugin = BullyPVP.instance;
         loadBuffs();
     }
@@ -134,8 +138,11 @@ public class Kit {
                     }
                 }
             player.getInventory().setArmorContents(armor.toArray(new ItemStack[4]));
+    }
+    else if (armorItems != null){
+    player.getInventory().setArmorContents(armorItems.toArray(new ItemStack[4]));
+    }
 
-}
         ItemStack weap = new ItemStack(Material.getMaterial(weapon));
 
         if (potions != null){
@@ -226,6 +233,7 @@ public class Kit {
                     }
                 }
             }
+
             if (armorLore != null){
                 for (ItemStack i : armor){
                     ItemMeta meta = i.getItemMeta();
@@ -237,6 +245,9 @@ public class Kit {
             }
             player.getInventory().setArmorContents(armor.toArray(new ItemStack[4]));
 
+        }
+        else if (armorItems != null){
+            player.getInventory().setArmorContents( armorItems.toArray(new ItemStack[4]));
         }
         ItemStack weap = new ItemStack(Material.getMaterial(weapon));
 

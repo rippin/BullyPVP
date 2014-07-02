@@ -1,7 +1,8 @@
 package me.bullyscraft.com.Stats;
 
-import me.bullyscraft.com.BullyScoreBoard;
+import me.bullyscraft.com.Scoreboards.BullyScoreBoard;
 import me.bullyscraft.com.MySQL.MySQL;
+import me.bullyscraft.com.Scoreboards.BullyScoreboardManager;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -231,8 +232,9 @@ private int highStreak1v1 = 0;
         else {
             MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE Username = '" + getUsername() + "';");
         }
-        BullyScoreBoard b = new BullyScoreBoard(player, this);
-        b.setUp();
+        BullyScoreBoard b = BullyScoreboardManager.getBullyScoreboard(UUID.toString());
+        b.setPSO(this);
+        b.updateWithoutPrefixes();
 
     }
 
@@ -244,9 +246,9 @@ private int highStreak1v1 = 0;
         else {
             MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE Username = '" + getUsername() + "';");
         }
-        BullyScoreBoard b = new BullyScoreBoard(player, this);
-        b.setUp();
-
+        BullyScoreBoard b = BullyScoreboardManager.getBullyScoreboard(UUID.toString());
+        b.setPSO(this);
+        b.updateWithoutPrefixes();
     }
 
     public void setUp(int kills, int deaths, int coins, int cs, int hs, String username, String kitClass){

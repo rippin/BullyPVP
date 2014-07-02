@@ -28,7 +28,8 @@ public class Config {
 		if (!(getFile().exists())){
 			plugin.getServer().getLogger().info("Config.yml not found. Creating now...");
 			try {
-				getFile().createNewFile();
+				plugin.getDataFolder().mkdirs();
+                getFile().createNewFile();
 				setConfigInfo();
 				saveFile(getFile(), getConfig());
 				plugin.getServer().getLogger().info("Config.yml has been created!");	

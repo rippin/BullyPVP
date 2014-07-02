@@ -1,6 +1,8 @@
 package me.bullyscraft.com.Listeners;
 
 import me.bullyscraft.com.*;
+import me.bullyscraft.com.Scoreboards.BullyScoreBoard;
+import me.bullyscraft.com.Scoreboards.BullyScoreboardManager;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
 import org.bukkit.Bukkit;
@@ -136,10 +138,12 @@ public class PlayerDeathListener implements Listener {
 						killer.getName(), plugin);
 				//clear the assist handler
 				n.clear();
-                BullyScoreBoard b = new BullyScoreBoard(killer, psoKiller);
-                b.setUp();
-                BullyScoreBoard b1 = new BullyScoreBoard(dead, psoDead);
-                b1.setUp();
+                BullyScoreBoard killerBoard = BullyScoreboardManager.getBullyScoreboard(killer.getUniqueId().toString());
+                killerBoard.setPSO(psoKiller);
+                killerBoard.updateWithoutPrefixes();
+                BullyScoreBoard deadBoard = BullyScoreboardManager.getBullyScoreboard(dead.getUniqueId().toString());
+                deadBoard.setPSO(psoDead);
+                deadBoard.updateWithoutPrefixes();
 			}
 
 		}
@@ -172,9 +176,10 @@ public class PlayerDeathListener implements Listener {
 			psoDead.setDeaths(++deaths);
             psoDead.setCurrentstreak(0);
 
+            BullyScoreBoard deadBoard = BullyScoreboardManager.getBullyScoreboard(dead.getUniqueId().toString());
+            deadBoard.setPSO(psoDead);
+            deadBoard.updateWithoutPrefixes();
 
-            BullyScoreBoard b1 = new BullyScoreBoard(dead, psoDead);
-            b1.setUp();
 		}
 
 	}

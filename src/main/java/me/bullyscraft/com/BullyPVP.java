@@ -22,13 +22,11 @@ import me.bullyscraft.com.MySQL.SetupTables;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
 import me.bullyscraft.com.Stats.TransferYmlToMySQL;
 import me.bullyscraft.com.cmds.KitPVPCommandExecutor;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import rippin.bullyscraft.com.KitPVP1v1;
 
 public class BullyPVP extends JavaPlugin {
 
@@ -46,8 +44,11 @@ public void onEnable() {
 
     new SpawnManager(this);
     new Config(this);
+    new PrefixConfig(this);
 	SpawnManager.createFiles();
 	Config.create();
+    PrefixConfig.create();
+
     FileConfiguration config = Config.getConfig();
     MySQL.MySQLInitialize(this, config.getString("MySQL.Hostname"), config.getString("MySQL.Port"),
             config.getString("MySQL.Database"), config.getString("MySQL.Username"), config.getString("MySQL.Password"));
@@ -56,6 +57,7 @@ public void onEnable() {
     if (c == null){
         getServer().getPluginManager().disablePlugin(this);
         this.logger.info(pdfFile.getName() + " was disabled. MYSQL connection was not available.");
+        return;
     }
     Bully1v1 = getServer().getPluginManager().getPlugin("Bully1v1");
     SetupTables.createTableIfDoesntExist();
