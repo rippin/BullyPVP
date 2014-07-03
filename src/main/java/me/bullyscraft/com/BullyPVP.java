@@ -19,6 +19,7 @@ import me.bullyscraft.com.Listeners.PlayerRespawnListener;
 import me.bullyscraft.com.Listeners.RegainHealthListener;
 import me.bullyscraft.com.MySQL.MySQL;
 import me.bullyscraft.com.MySQL.SetupTables;
+import me.bullyscraft.com.Scoreboards.BullyScoreboardManager;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
 import me.bullyscraft.com.Stats.TransferYmlToMySQL;
 import me.bullyscraft.com.cmds.KitPVPCommandExecutor;
@@ -68,6 +69,7 @@ public void onEnable() {
     }
 
     KitManager.loadKits(this); //load kits
+    BullyScoreboardManager.loadPrefixList(); //load prefixes
     SetupTables.cacheWholeDatabase(this); //cache whole database
     PluginManager pm = this.getServer().getPluginManager();
 	

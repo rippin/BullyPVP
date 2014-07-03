@@ -25,9 +25,11 @@ public class BullyScoreboardManager {
     }
 
     public static void removeBullyScoreboard(String uuid){
-        for (BullyScoreBoard b : scoreBoards){
+        Iterator<BullyScoreBoard> it = scoreBoards.iterator();
+        while (it.hasNext()){
+            BullyScoreBoard b = it.next();
             if (b.getUUID().equalsIgnoreCase(uuid)){
-                scoreBoards.remove(b);
+                it.remove();
             }
         }
     }

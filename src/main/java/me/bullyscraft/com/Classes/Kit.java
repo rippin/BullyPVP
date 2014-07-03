@@ -33,6 +33,7 @@ public class Kit {
     private String kitDescription;
     private BullyPVP plugin;
     private String weaponName;
+    private String ability;
 
     public Kit(String kitName) {
         this.kitName = kitName;
@@ -57,6 +58,7 @@ public class Kit {
         if (KitManager.getArmor(kitName) != null) {
         armorItems = KitManager.getArmor(kitName);
         }
+        ability = Config.getConfig().getString("Kits." + getName() + ".Ability");
         plugin = BullyPVP.instance;
         loadBuffs();
     }
@@ -187,20 +189,12 @@ public class Kit {
         }
 
        player.getInventory().setItem(0, weap);
-
+        //ITEM:1 NAME LORE|LORE2|
         if (items != null){
-            for (String s : items){
-                if (s.contains(":")) {
-                    String[] split = s.split(":");
-                ItemStack items = new ItemStack(Material.getMaterial(split[0].toUpperCase()), Integer.parseInt(split[1]));
-                player.getInventory().addItem(items);
-                }
-                else {
-                ItemStack items = new ItemStack(Material.getMaterial(s.toUpperCase()));
-                player.getInventory().addItem(items);
+         for (ItemStack i : KitManager.parseItems(items)){
+             player.getInventory().addItem(i);
+         }
 
-                }
-             }
         }
 
         player.updateInventory();
@@ -233,7 +227,6 @@ public class Kit {
                     }
                 }
             }
-
             if (armorLore != null){
                 for (ItemStack i : armor){
                     ItemMeta meta = i.getItemMeta();
@@ -244,11 +237,11 @@ public class Kit {
                 }
             }
             player.getInventory().setArmorContents(armor.toArray(new ItemStack[4]));
-
         }
         else if (armorItems != null){
-            player.getInventory().setArmorContents( armorItems.toArray(new ItemStack[4]));
+            player.getInventory().setArmorContents(armorItems.toArray(new ItemStack[4]));
         }
+
         ItemStack weap = new ItemStack(Material.getMaterial(weapon));
 
         if (potions != null){
@@ -293,22 +286,13 @@ public class Kit {
         }
 
         player.getInventory().setItem(0, weap);
-
         if (items != null){
-            for (String s : items){
-                if (s.contains(":")) {
-                    String[] split = s.split(":");
-                    ItemStack items = new ItemStack(Material.getMaterial(split[0].toUpperCase()), Integer.parseInt(split[1]));
-                    player.getInventory().addItem(items);
-                }
-                else {
-                    ItemStack items = new ItemStack(Material.getMaterial(s.toUpperCase()));
-                    player.getInventory().addItem(items);
-
-                }
+            for (ItemStack i : KitManager.parseItems(items)){
+                player.getInventory().addItem(i);
             }
+
         }
-        RefillSoup.soup(player);
+
         player.updateInventory();
         player.sendMessage(ChatColor.GREEN + "You have been given the " + getName() + " kit.");
     }
@@ -334,4 +318,8 @@ public class Kit {
     }
 
     public String getKitNoPerms() { return kitNoPerms; }
+
+    public String getAbility(){
+        return  ability;
+    }
 }

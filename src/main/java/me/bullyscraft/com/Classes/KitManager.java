@@ -121,6 +121,7 @@ public static Kit getKit(String name){
         }
         List<ItemStack> armor = new ArrayList<ItemStack>();
         for (String i : items){
+            if (i.contains(" ")) {
             String splitspace[] = i.split("\\s+");
             ItemStack item = new ItemStack(Material.getMaterial(splitspace[0]));
            for (int j = 1; j < splitspace.length; j++){
@@ -136,11 +137,66 @@ public static Kit getKit(String name){
                        item.setItemMeta(meta);
                    }
                }
+
             armor.add(item);
+            }
+            else {
+                ItemStack item = new ItemStack(Material.getMaterial(i));
+                armor.add(item);
+            }
         }
         return armor;
     }
+    //ITEM:QUANTITY NAME:name_space Lore:lore_lore_
+    public static List<ItemStack> parseItems(List<String> strings){
+      List<ItemStack> items = new ArrayList<ItemStack>();
+        for (String s : strings){
+          if (s.contains(" ")){
+              String splitspace[] = s.split("\\s+");
+              ItemStack i;
+              if (splitspace[0].contains(":")) {
+                  String splitamount[] = splitspace[0].split(":");
+                  i = new ItemStack(Material.getMaterial(splitamount[0]), Integer.parseInt(splitamount[1]));
+              }
 
+              else{
+                  i = new ItemStack(Material.getMaterial(splitspace[0]));
+              }
+             for (int j = 1; j < splitspace.length; j++){
+                 ItemMeta meta = i.getItemMeta();
+                 if (splitspace[j].contains("Name")){
+                     String splitName[] = splitspace[j].split(":");
+                     splitName[1] = splitName[1].replace("_", " ");
+
+                     meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', splitName[1]));
+                 }
+                 else if (splitspace[j].contains("Lore")){
+                     String splitLore[] = splitspace[j].split(":");
+                     for (int k = 1; k < 1; k++){
+                         splitLore[k] = splitLore[k].replace("|", " ");
+                         splitLore[k] = ChatColor.translateAlternateColorCodes('&', splitLore[k]);
+                     }
+                     if (splitLore[1].contains("_")){
+                         String splitLoreSpace[] = splitLore[1].split("_");
+                         meta.setLore(Arrays.asList(splitLoreSpace));
+                     }
+                 }
+                i.setItemMeta(meta);
+                 items.add(i);
+             }
+          }
+          else{
+            if (s.contains(":")){
+                String split[] = s.split(":");
+                items.add(new ItemStack(Material.getMaterial(split[0]), Integer.parseInt(split[1])));
+            }
+              else{
+                items.add(new ItemStack(Material.getMaterial(s)));
+            }
+          }
+      }
+        return items;
+    }
     public static Color getFromString(String string){
 
         if (string.equalsIgnoreCase("black")){

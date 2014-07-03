@@ -16,7 +16,7 @@ public class PrefixConfig {
     @SuppressWarnings("static-access")
     public PrefixConfig(BullyPVP plugin){
         this.plugin = plugin;
-        this.configFile = new File(plugin.getDataFolder(), "config.yml");
+        this.configFile = new File(plugin.getDataFolder(), "prefixes.yml");
         this.config = YamlConfiguration.loadConfiguration(configFile);
     }
 

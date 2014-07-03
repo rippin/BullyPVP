@@ -60,7 +60,8 @@ public class LoginListener implements Listener {
         pso.setUsername(player.getName()); //Set username every join in case of name change.
 
 		BullyScoreBoard b = new BullyScoreBoard(player, pso);
-		b.updateWithoutPrefixes();
+		b.update();
+        BullyScoreboardManager.getAllBullyScoreboards().add(b); // add le scoreboard
         BullyScoreboardManager.addPlayerToAllScoreboards(player); //Update all scoreboards
 		player.teleport(Spawn.getSpawnLoc());
 

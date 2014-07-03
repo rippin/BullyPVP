@@ -1,6 +1,8 @@
 package me.bullyscraft.com.Listeners;
 
 import me.bullyscraft.com.*;
+import me.bullyscraft.com.Classes.Kit;
+import me.bullyscraft.com.Classes.KitManager;
 import me.bullyscraft.com.Scoreboards.BullyScoreBoard;
 import me.bullyscraft.com.Scoreboards.BullyScoreboardManager;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
@@ -12,7 +14,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import rippin.bullyscraft.com.ArenaManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerDeathListener implements Listener {
 
@@ -36,6 +43,45 @@ public class PlayerDeathListener implements Listener {
 			Player killer = event.getEntity().getKiller();
             PlayerStatsObject psoDead = PlayerStatsObjectManager.getPSO(dead, plugin);
             PlayerStatsObject psoKiller = PlayerStatsObjectManager.getPSO(killer, plugin);
+			/*
+
+			Abilities Start
+
+
+			 */
+            Kit deadKit = KitManager.getKit(psoDead.getKitClass());
+            Kit killerKit = KitManager.getKit(psoKiller.getKitClass());
+
+            //Ability Tank
+
+            if (killerKit.getAbility().equalsIgnoreCase("Tank")){
+                killer.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 80, 0));
+            }
+            // Ability Pro
+            if (killerKit.getAbility().equalsIgnoreCase("Pro")){
+                psoKiller.addCoins(5);
+                killer.sendMessage(ChatColor.AQUA + "You have received an extra " + ChatColor.GREEN + " coins");
+            }
+
+            // Ability Exo
+            if (killerKit.getAbility().equalsIgnoreCase("Exo")){
+                killer.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 80, 1));
+                killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 80, 2));
+                killer.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 80, 1));
+            }
+
+
+
+
+            /*
+
+            Abilities End
+
+
+             */
+
+
+
 
             //set stats for 1v1
             if (plugin.isBully1v1Enabled()){
@@ -44,7 +90,7 @@ public class PlayerDeathListener implements Listener {
                    return;
                 }
             }
-			
+
 
 			event.setDeathMessage(null);
             //getting kills and deaths;
@@ -183,5 +229,4 @@ public class PlayerDeathListener implements Listener {
 		}
 
 	}
-
 }
