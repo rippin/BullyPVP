@@ -147,7 +147,7 @@ public static Kit getKit(String name){
         }
         return armor;
     }
-    //ITEM:QUANTITY NAME:name_space Lore:lore_lore_
+    //ITEM:QUANTITY NAME:name_space ENCHANT:Sharpness@5 Lore:lore|lore_lore | = space _ = new line
     public static List<ItemStack> parseItems(List<String> strings){
       List<ItemStack> items = new ArrayList<ItemStack>();
         for (String s : strings){
@@ -164,26 +164,30 @@ public static Kit getKit(String name){
               }
              for (int j = 1; j < splitspace.length; j++){
                  ItemMeta meta = i.getItemMeta();
-                 if (splitspace[j].contains("Name")){
+                 if (splitspace[j].toLowerCase().contains("Name".toLowerCase())){
                      String splitName[] = splitspace[j].split(":");
                      splitName[1] = splitName[1].replace("_", " ");
 
                      meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', splitName[1]));
+                     i.setItemMeta(meta);
                  }
-                 else if (splitspace[j].contains("Lore")){
+                 else if (splitspace[j].toLowerCase().contains("Lore".toLowerCase())){
                      String splitLore[] = splitspace[j].split(":");
-                     for (int k = 1; k < 1; k++){
-                         splitLore[k] = splitLore[k].replace("|", " ");
-                         splitLore[k] = ChatColor.translateAlternateColorCodes('&', splitLore[k]);
-                     }
+                         splitLore[1] = splitLore[1].replace("|", " ");
+                         splitLore[1] = ChatColor.translateAlternateColorCodes('&', splitLore[1]);
                      if (splitLore[1].contains("_")){
                          String splitLoreSpace[] = splitLore[1].split("_");
                          meta.setLore(Arrays.asList(splitLoreSpace));
                      }
+                     i.setItemMeta(meta);
                  }
-                i.setItemMeta(meta);
-                 items.add(i);
+               else if (splitspace[j].toLowerCase().contains("Enchant".toLowerCase())){
+                     String splitEnchant[] = splitspace[j].split(":");
+                     String splitLevel[] = splitEnchant[1].split("@");
+                     i.addUnsafeEnchantment(Enchantment.getByName(Buffs.getOfficialEnchantmentName(splitLevel[0])), Integer.parseInt(splitLevel[1]));
+                 }
              }
+              items.add(i);
           }
           else{
             if (s.contains(":")){

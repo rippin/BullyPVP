@@ -1,6 +1,7 @@
 package me.bullyscraft.com.Classes;
 
 
+import me.bullyscraft.com.AbilityCountdowns.AbilityCountdown;
 import me.bullyscraft.com.BullyPVP;
 import me.bullyscraft.com.Config;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
@@ -33,7 +34,6 @@ public class Kit {
     private String kitDescription;
     private BullyPVP plugin;
     private String weaponName;
-    private String ability;
 
     public Kit(String kitName) {
         this.kitName = kitName;
@@ -48,7 +48,9 @@ public class Kit {
         items = Config.getConfig().getStringList("Kits." + getName() + ".Items");
         }
         weaponEnchants = Config.getConfig().getStringList("Kits." + getName() + ".Weapon.Enchants");
+        if (Config.getConfig().getStringList("Kits." + getName() + ".Weapon.Lore") != null){
         weaponLore = Config.getConfig().getStringList("Kits." + getName() + ".Weapon.Lore");
+        }
         armorEnchants = Config.getConfig().getStringList("Kits." + getName() + ".Armor.Enchants");
         armorLore = Config.getConfig().getStringList("Kits." + getName() + ".Armor.Lore");
         kitType = Config.getConfig().getString("Kits." + getName() + ".Type");
@@ -58,7 +60,6 @@ public class Kit {
         if (KitManager.getArmor(kitName) != null) {
         armorItems = KitManager.getArmor(kitName);
         }
-        ability = Config.getConfig().getString("Kits." + getName() + ".Ability");
         plugin = BullyPVP.instance;
         loadBuffs();
     }
@@ -145,7 +146,10 @@ public class Kit {
     player.getInventory().setArmorContents(armorItems.toArray(new ItemStack[4]));
     }
 
-        ItemStack weap = new ItemStack(Material.getMaterial(weapon));
+        ItemStack weap = null;
+        if (weapon != null) {
+            weap = new ItemStack(Material.getMaterial(weapon));
+        }
 
         if (potions != null){
             for (String s : potions) {
@@ -175,7 +179,7 @@ public class Kit {
                 }
             }
 
-            if (weaponLore != null){
+            if (weap != null && weaponLore != null){
                 ItemMeta meta = weap.getItemMeta();
                 weaponLore = translateColorCodes(weaponLore);
                 meta.setLore(weaponLore);
@@ -189,7 +193,6 @@ public class Kit {
         }
 
        player.getInventory().setItem(0, weap);
-        //ITEM:1 NAME LORE|LORE2|
         if (items != null){
          for (ItemStack i : KitManager.parseItems(items)){
              player.getInventory().addItem(i);
@@ -198,6 +201,16 @@ public class Kit {
         }
 
         player.updateInventory();
+
+        if (getName().equalsIgnoreCase("Freezer")){
+            new AbilityCountdown(180, plugin, player).startFreezerCountdown();
+        }
+        else if (getName().equalsIgnoreCase("Assassin")){
+            new AbilityCountdown(180, plugin, player).startAssassinCountdown();
+        }
+        else if (getName().equalsIgnoreCase("Pyro")){
+            new AbilityCountdown(180, plugin, player).startPyroCountdown();
+        }
         player.sendMessage(ChatColor.GREEN + "You have been given the " + getName() + " kit.");
         PlayerStatsObjectManager.getPSO(player, plugin).setKitClass(getName());
 
@@ -241,8 +254,10 @@ public class Kit {
         else if (armorItems != null){
             player.getInventory().setArmorContents(armorItems.toArray(new ItemStack[4]));
         }
-
-        ItemStack weap = new ItemStack(Material.getMaterial(weapon));
+        ItemStack weap = null;
+        if (weapon != null) {
+        weap = new ItemStack(Material.getMaterial(weapon));
+        }
 
         if (potions != null){
             for (String s : potions) {
@@ -294,7 +309,18 @@ public class Kit {
         }
 
         player.updateInventory();
+
+        if (getName().equalsIgnoreCase("Freezer")){
+            new AbilityCountdown(180, plugin, player).startFreezerCountdown();
+        }
+        else if (getName().equalsIgnoreCase("Assassin")){
+            new AbilityCountdown(180, plugin, player).startAssassinCountdown();
+        }
+        else if (getName().equalsIgnoreCase("Pyro")){
+            new AbilityCountdown(180, plugin, player).startPyroCountdown();
+        }
         player.sendMessage(ChatColor.GREEN + "You have been given the " + getName() + " kit.");
+
     }
 
 
@@ -319,7 +345,4 @@ public class Kit {
 
     public String getKitNoPerms() { return kitNoPerms; }
 
-    public String getAbility(){
-        return  ability;
-    }
 }

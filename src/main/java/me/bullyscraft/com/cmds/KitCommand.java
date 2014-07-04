@@ -25,8 +25,8 @@ public class KitCommand extends CommandInterface {
 
         if (args.length == 0) {
             sender.sendMessage(ChatColor.RED + "Kits Available: ");
-            for (Kit k : KitManager.getAllKits()) {
-                sender.sendMessage(ChatColor.GOLD + k.getName());
+            for (Kit k : KitManager.getAllKits()){
+                sender.sendMessage(ChatColor.RED + "/kit " + k.getName() + ChatColor.GOLD + "  " + k.getKitDescription());
             }
         } else if (args.length == 1) {
             if (sender instanceof Player) {

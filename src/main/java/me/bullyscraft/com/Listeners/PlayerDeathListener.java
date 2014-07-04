@@ -9,10 +9,12 @@ import me.bullyscraft.com.Stats.PlayerStatsObject;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -49,27 +51,29 @@ public class PlayerDeathListener implements Listener {
 
 
 			 */
-            Kit deadKit = KitManager.getKit(psoDead.getKitClass());
-            Kit killerKit = KitManager.getKit(psoKiller.getKitClass());
 
             //Ability Tank
 
-            if (killerKit.getAbility().equalsIgnoreCase("Tank")){
+            if (psoKiller.getKitClass().equalsIgnoreCase("Tank")){
                 killer.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 80, 0));
             }
             // Ability Pro
-            if (killerKit.getAbility().equalsIgnoreCase("Pro")){
+            if (psoKiller.getKitClass().equalsIgnoreCase("Pro")){
                 psoKiller.addCoins(5);
                 killer.sendMessage(ChatColor.AQUA + "You have received an extra " + ChatColor.GREEN + " coins");
             }
 
             // Ability Exo
-            if (killerKit.getAbility().equalsIgnoreCase("Exo")){
+            if (psoKiller.getKitClass().equalsIgnoreCase("Exo")){
                 killer.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 80, 1));
                 killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 80, 2));
                 killer.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 80, 1));
             }
-
+            if (psoDead.getKitClass().equalsIgnoreCase("Pyro")){
+                killer.setFireTicks(80);
+                killer.sendMessage(ChatColor.GREEN + "Set on fire by " + ChatColor.AQUA + dead.getName() + ChatColor.GREEN + "'s Pyro ability.");
+                dead.sendMessage(ChatColor.GREEN + "You set " + ChatColor.AQUA + killer.getName() + ChatColor.GREEN + "on fire using a Pyro ability.");
+            }
 
 
 

@@ -145,7 +145,7 @@ public class Buffs {
             buff = "PROTECTION_ENVIRONMENTAL";
         } else if (buff.equalsIgnoreCase("BLASTPROTECTION")) {
             buff = "PROTECTION_EXPLOSIONS";
-        } else if (buff.equalsIgnoreCase("FALLPROTECTION")) {
+        } else if (buff.equalsIgnoreCase("FEATHERFALLING")) {
             buff = "PROTECTION_FALL";
         } else if (buff.equalsIgnoreCase("FIREPROTECTION")) {
             buff = "PROTECTION_FIRE";

@@ -1,5 +1,6 @@
 package me.bullyscraft.com.Listeners;
 
+import me.bullyscraft.com.AbilityCountdowns.AbilityCountdown;
 import me.bullyscraft.com.BullyPVP;
 import me.bullyscraft.com.Scoreboards.BullyScoreBoard;
 import me.bullyscraft.com.Classes.Kit;
@@ -63,7 +64,17 @@ public class LoginListener implements Listener {
 		b.update();
         BullyScoreboardManager.getAllBullyScoreboards().add(b); // add le scoreboard
         BullyScoreboardManager.addPlayerToAllScoreboards(player); //Update all scoreboards
-		player.teleport(Spawn.getSpawnLoc());
+		if (pso.getKitClass().equalsIgnoreCase("Freezer")){
+        new AbilityCountdown(120, plugin, player).startFreezerCountdown();
+        }
+        else if (pso.getKitClass().equalsIgnoreCase("Assassin")){
+            new AbilityCountdown(120, plugin, player).startAssassinCountdown();
+        }
+        else if (pso.getKitClass().equalsIgnoreCase("Pyro")){
+            new AbilityCountdown(120, plugin, player).startPyroCountdown();
+        }
+
+        player.teleport(Spawn.getSpawnLoc());
 
 
 	}

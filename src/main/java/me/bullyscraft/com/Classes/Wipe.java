@@ -49,6 +49,7 @@ public class Wipe {
         for(PotionEffect pe : player.getActivePotionEffects()){
             player.removePotionEffect(pe.getType());
         }
+        if (k.getWeapon() != null)
         if (inv.contains(Material.getMaterial(k.getWeapon()))){
             inv.remove(Material.getMaterial(k.getWeapon()));
         }

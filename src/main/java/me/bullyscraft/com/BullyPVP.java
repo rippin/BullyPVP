@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
+
+import me.bullyscraft.com.AbilityCountdowns.AbilityCountdown;
 import me.bullyscraft.com.Classes.KitManager;
 import me.bullyscraft.com.Listeners.ConsumeItemListener;
 import me.bullyscraft.com.Listeners.CustomHealthListener;
@@ -38,6 +40,7 @@ public class BullyPVP extends JavaPlugin {
  private Connection c = null;
  public static BullyPVP instance;
  private Plugin Bully1v1;
+ public HashMap<AbilityCountdown, String> abilityCountdown = new HashMap<AbilityCountdown, String>();
 
 public void onEnable() {
     instance = this;
