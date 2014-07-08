@@ -34,21 +34,21 @@ public class MySQL {
     private static void configureConnPool() {
         try {
             if (Config.getConfig().getBoolean("MySQL.Enabled") != false) {
-            Class.forName("com.mysql.jdbc.Driver"); //also you need the MySQL driver
-            BoneCPConfig config = new BoneCPConfig();
-            config.setJdbcUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database);
-            config.setUsername(user);
-            config.setPassword(password);
-            config.setMinConnectionsPerPartition(8); //if you say 5 here, there will be 10 connection available
-            config.setMaxConnectionsPerPartition(20);
+                Class.forName("com.mysql.jdbc.Driver"); //also you need the MySQL driver
+                BoneCPConfig config = new BoneCPConfig();
+                config.setJdbcUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database);
+                config.setUsername(user);
+                config.setPassword(password);
+                config.setMinConnectionsPerPartition(8); //if you say 5 here, there will be 10 connection available
+                config.setMaxConnectionsPerPartition(20);
 
-            config.setPartitionCount(2); //2*5 = 10 connection will be available
-            config.setLazyInit(false);
-            //setting Lazy true means BoneCP won't open any connections before you request a one from it.
-            connectionPool = new BoneCP(config); // setup the connection pool
-            System.out.println("contextInitialized.....Connection Pooling is configured");
-            System.out.println("Total connections ==> " + connectionPool.getTotalCreatedConnections());
-            MySQL.setConnectionPool(connectionPool);
+                config.setPartitionCount(2); //2*5 = 10 connection will be available
+                config.setLazyInit(false);
+                //setting Lazy true means BoneCP won't open any connections before you request a one from it.
+                connectionPool = new BoneCP(config); // setup the connection pool
+                System.out.println("contextInitialized.....Connection Pooling is configured");
+                System.out.println("Total connections ==> " + connectionPool.getTotalCreatedConnections());
+                MySQL.setConnectionPool(connectionPool);
             }
             else {
                 System.out.println("Using SQLite");
@@ -80,7 +80,7 @@ public class MySQL {
             System.out.println("contextDestroyed....");
             if (connectionPool != null) {
                 connectionPool.shutdown(); //this method must be called only once when the application stops.
-            //you don't need to call it every time when you get a connection from the Connection Pool
+                //you don't need to call it every time when you get a connection from the Connection Pool
                 System.out.println("contextDestroyed.....Connection Pooling shut downed!");
             }
 
@@ -94,8 +94,8 @@ public class MySQL {
         Connection conn = null;
         try {
             conn = getConnectionPool().getConnection();
-    //will get a thread-safe connection from the BoneCP connection pool.
-    //synchronization of the method will be done inside BoneCP source
+            //will get a thread-safe connection from the BoneCP connection pool.
+            //synchronization of the method will be done inside BoneCP source
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -180,9 +180,9 @@ public class MySQL {
                 MySQL.closePreparedStatement(s);
                 MySQL.closeConnection(c);
             }
-            });
+        });
 
-            }
+    }
 
 
 

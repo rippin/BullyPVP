@@ -2,11 +2,15 @@ package me.bullyscraft.com.AbilityCountdowns;
 
 import me.bullyscraft.com.BullyPVP;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AbilityCountdown {
     private int delay;
@@ -44,9 +48,13 @@ public class AbilityCountdown {
                             else {
                                 ItemStack item = new ItemStack(Material.SNOW_BALL);
                                 ItemMeta meta = item.getItemMeta();
-                                meta.setDisplayName("Web Balls");
+                                meta.setDisplayName(ChatColor.AQUA + "Web Balls");
+                                List<String> lore = new ArrayList<String>();
+                                lore.add(ChatColor.GREEN + "Trap a player in a web when you hit them.");
+                                lore.add(ChatColor.GREEN + "you hit them.");
+                                meta.setLore(lore);
                                 item.setItemMeta(meta);
-
+                                inv.addItem(item);
                             }
                         }
 
@@ -81,9 +89,12 @@ public class AbilityCountdown {
                             else {
                                 ItemStack item = new ItemStack(Material.SNOW_BALL);
                                 ItemMeta meta = item.getItemMeta();
-                                meta.setDisplayName("Slow Balls");
+                                meta.setDisplayName(ChatColor.GREEN + "Slow Balls");
+                                List<String> lore = new ArrayList<String>();
+                                lore.add(ChatColor.AQUA + "Deal slowness when you hit someone");
+                                meta.setLore(lore);
                                 item.setItemMeta(meta);
-
+                                inv.addItem(item);
                             }
                         }
 
@@ -117,9 +128,11 @@ public class AbilityCountdown {
                             else {
                                 ItemStack item = new ItemStack(Material.EGG);
                                 ItemMeta meta = item.getItemMeta();
-                                meta.setDisplayName("Fire Egg");
+                                meta.setDisplayName(ChatColor.DARK_RED + "Fire Egg");
                                 item.setItemMeta(meta);
-
+                                List<String> lore = new ArrayList<String>();
+                                lore.add(ChatColor.RED + "Ignite players when hit with egg.");
+                                inv.addItem(item);
                             }
                         }
 

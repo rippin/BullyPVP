@@ -9,6 +9,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by EF on 7/3/14.
  */
@@ -18,6 +21,7 @@ public class BleedCountdown {
     private int taskid;
     private Player damager;
     private Player damagee;
+    private static List<String> players = new ArrayList<String>();
 
     public BleedCountdown(int delay, BullyPVP plugin, Player damager, Player damagee){
         this.delay = delay;
@@ -29,6 +33,9 @@ public class BleedCountdown {
 
     public void startBleedingCountdown(){
         final int realDelay = delay;
+        if (players.contains(damager.getUniqueId().toString())){
+            return;
+        }
         taskid =  plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
             @Override
             public void run() {
@@ -37,6 +44,7 @@ public class BleedCountdown {
                     cancelTask(taskid);
                 }
                 else {
+                    players.add(damager.getUniqueId().toString());
                     EntityDamageByEntityEvent event = new EntityDamageByEntityEvent(damager, damagee, EntityDamageEvent.DamageCause.CUSTOM, 2.0);
                     damagee.getWorld().playEffect(damagee.getLocation(), Effect.STEP_SOUND, Material.ICE);
                     damagee.playEffect(EntityEffect.HURT);
@@ -56,6 +64,7 @@ public class BleedCountdown {
 
     public void cancelTask(int taskid){
         plugin.getServer().getScheduler().cancelTask(taskid);
+        players.remove(damager.getUniqueId().toString());
     }
 
 

@@ -34,4 +34,26 @@ public class GetBuffs {
         }
         return 0;
     }
+    public static int getWeaponBuff(Player player, Kit kit, String buff){
+        int level = 0;
+        if (player.getInventory().getItem(0).
+                containsEnchantment(Enchantment.getByName(Buffs.getOfficialEnchantmentName(buff.toUpperCase())))) {
+            level = player.getInventory().getItem(0).
+                    getEnchantmentLevel(Enchantment.getByName(Buffs.getOfficialEnchantmentName(buff.toUpperCase())));
+            return level;
+        }
+
+        return level;
+    }
+    public static int getArmorBuff(Player player, Kit kit, String buff){
+        int level = 0;
+        if (player.getInventory().getItem(0).
+                containsEnchantment(Enchantment.getByName(Buffs.getOfficialEnchantmentName(buff.toUpperCase())))) {
+            level = player.getInventory().getItem(0).
+                    getEnchantmentLevel(Enchantment.getByName(Buffs.getOfficialEnchantmentName(buff.toUpperCase())));
+            return level;
+        }
+
+        return level;
+    }
 }

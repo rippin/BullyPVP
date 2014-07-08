@@ -1,6 +1,8 @@
 package me.bullyscraft.com.Stats;
 
 import me.bullyscraft.com.BullyPVP;
+import me.bullyscraft.com.Scoreboards.BullyScoreBoard;
+import me.bullyscraft.com.Scoreboards.BullyScoreboardManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -39,5 +41,23 @@ public class ViewStats {
         }
 	
 	}
+
+    public static void resetStats(Player player, BullyPVP plugin){
+        PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(player, plugin);
+        pso.setKills(0);
+        pso.setDeaths(0);
+        pso.setHigheststreak(0);
+        pso.setCurrentstreak(0);
+        if (plugin.isBully1v1Enabled()){
+            pso.setWins1v1(0);
+            pso.setLosses1v1(0);
+            pso.setHighStreak1v1(0);
+            pso.setCurrentStreak1v1(0);
+        }
+        BullyScoreBoard b = BullyScoreboardManager.getBullyScoreboard(player.getUniqueId().toString());
+        b.setPSO(pso);
+        b.updateWithoutPrefixes();
+        player.sendMessage(ChatColor.GREEN + "Stats reset.");
+    }
 
 }

@@ -65,7 +65,7 @@ public class Buffs {
 
                 return;
             }
-        } else if (type.equalsIgnoreCase("Item")) {
+        }  else if (type.equalsIgnoreCase("Item")) {
             if (buff.equalsIgnoreCase("refill")) {
                 final String finalbuff = buff;
                 final Kit finalKit = k;
@@ -105,6 +105,98 @@ public class Buffs {
             ItemStack i = player.getInventory().getItem(0);
             i.setDurability((short) 0);
             player.sendMessage(ChatColor.GREEN + "Items repaired!");
+            }
+        }
+    }
+
+    public static void giveBuff(final Player player, Kit k, String buff, String type) {
+
+        if (type.equalsIgnoreCase("Potion")) {
+            player.sendMessage(ChatColor.GREEN + buff + " buff added.");
+
+            int length = Config.getConfig().getInt("Kits." + k.getName() + ".Buffs." + buff + ".Length");
+            int power = Config.getConfig().getInt("Kits." + k.getName() + ".Buffs." + buff + ".Power");
+            buff = Buffs.getOfficialPotionName(buff);
+            player.addPotionEffect(new PotionEffect(PotionEffectType.getByName(buff.toUpperCase()), length, power), true);
+
+            return;
+        } else if (type.equalsIgnoreCase("Weapon-Enchantment")) {
+            int level = 0;
+            player.sendMessage(ChatColor.GREEN + buff + " buff added.");
+            buff = Buffs.getOfficialEnchantmentName(buff);
+            if (player.getInventory().getItem(0).containsEnchantment(Enchantment.getByName(buff.toUpperCase()))) {
+                level = player.getInventory().getItem(0).getEnchantmentLevel(Enchantment.getByName(buff.toUpperCase()));
+            }
+            player.getInventory().getItem(0)
+                    .addUnsafeEnchantment(Enchantment.getByName(buff.toUpperCase()), ++level);
+
+
+            return;
+        } else if (type.equalsIgnoreCase("Armor-Enchantment")) {
+            int level = 0;
+
+            if (player.getInventory().getChestplate().containsEnchantment(Enchantment.getByName(getOfficialEnchantmentName(buff.toUpperCase())))) {
+                player.sendMessage(ChatColor.GREEN + buff + " buff added.");
+                buff = Buffs.getOfficialEnchantmentName(buff);
+                level = player.getInventory().getChestplate().getEnchantmentLevel(Enchantment.getByName(buff.toUpperCase()));
+                ItemStack[] armor = player.getInventory().getArmorContents();
+                ++level;
+                for (ItemStack i : armor) {
+                    i.addUnsafeEnchantment(Enchantment.getByName(buff.toUpperCase()), level);
+                }
+
+                return;
+            } else {
+                player.sendMessage(ChatColor.GREEN + buff + " buff added.");
+                ItemStack[] armor = player.getInventory().getArmorContents();
+                buff = Buffs.getOfficialEnchantmentName(buff);
+                ++level;
+                for (ItemStack i : armor) {
+                    i.addUnsafeEnchantment(Enchantment.getByName(buff.toUpperCase()), level);
+                }
+
+                return;
+            }
+        }  else if (type.equalsIgnoreCase("Item")) {
+            if (buff.equalsIgnoreCase("refill")) {
+                final String finalbuff = buff;
+                final Kit finalKit = k;
+                final String materialItem = Config.getConfig().getString("Kits." + finalKit.getName() + ".Buffs." + finalbuff + ".Material");
+                final BullyPVP plugin = BullyPVP.instance;
+                player.sendMessage(ChatColor.RED + "Please wait 8 seconds for your items to be refilled.");
+                plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+                    @Override
+                    public void run() {
+                        if (plugin.isBully1v1Enabled()){
+                            if (ArenaManager.isInArena(player)){
+                                player.sendMessage(ChatColor.RED + " No glitching to get soup in a 1v1.");
+                                return;
+                            }
+                        }
+                        for (int i = 0; i < Config.getConfig().getInt("Kits." + finalKit.getName() + ".Buffs." + finalbuff + ".Amount"); i++) {
+                            if (player.getInventory().contains(Material.getMaterial(materialItem), 33)){
+                                break;
+                            }
+                            player.getInventory().addItem(new ItemStack(Material.getMaterial(materialItem)));
+                        }
+                        player.sendMessage(ChatColor.GREEN + "Soup refilled.");
+                    }
+                },160L);
+
+                return;
+            }
+            player.getInventory().addItem(new ItemStack(Material.getMaterial(buff.toUpperCase()),
+                    Config.getConfig().getInt("Kits." + k.getName() + ".Buffs." + buff + ".Amount")));
+            player.sendMessage(ChatColor.GREEN + buff + " buff added.");
+            return;
+        } else if (type.equalsIgnoreCase("Other")) {
+            if (buff.equalsIgnoreCase("repair")) {
+                for (ItemStack item : player.getInventory().getArmorContents()) {
+                    item.setDurability((short) 0);
+                }
+                ItemStack i = player.getInventory().getItem(0);
+                i.setDurability((short) 0);
+                player.sendMessage(ChatColor.GREEN + "Items repaired!");
             }
         }
     }

@@ -9,6 +9,7 @@ import me.bullyscraft.com.Spawn;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -23,7 +24,7 @@ public class PlayerRespawnListener implements Listener {
 
 	}
 
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		final Player player = event.getPlayer();
         if (plugin.isBully1v1Enabled()){

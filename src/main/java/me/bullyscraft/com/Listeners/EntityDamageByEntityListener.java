@@ -11,16 +11,15 @@ import org.bukkit.EntityEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Egg;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Snowball;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 import rippin.bullyscraft.com.ArenaManager;
 import java.util.Random;
 
@@ -92,11 +91,28 @@ public class EntityDamageByEntityListener implements Listener {
                 PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(damager, plugin);
                 if (pso.getKitClass().equalsIgnoreCase("Medic")){
                     if (player.getHealth() != player.getMaxHealth()){
-                    player.setHealth(player.getHealth() + 1.0);
-                    player.sendMessage(ChatColor.AQUA + "Healed one heart by " + ChatColor.GREEN + damager.getName() + "'s ability.");
-                    a.playEffect(EntityEffect.WOLF_HEARTS);
+                    if (player.getHealth() + event.getDamage() < player.getMaxHealth()) {
+                    player.setHealth(player.getHealth() + event.getDamage());
                     }
-                 }
+                      else {
+                            player.setHealth(player.getMaxHealth());
+                        }
+                        Location l = player.getLocation();
+                        l.setY(400);
+                    player.sendMessage(ChatColor.AQUA + "Healed " + event.getDamage() + " by " + ChatColor.GREEN + damager.getName() + "'s ability.");
+                    final Wolf w = (Wolf) a.getWorld().spawnEntity(l, EntityType.WOLF);
+                    w.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000, 0));
+                    w.teleport(player.getLocation());
+                        plugin.getServer().getScheduler().runTaskLater(plugin, new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                w.playEffect(EntityEffect.WOLF_HEARTS);
+                                w.remove();
+                            }
+                        }, 3L);
+                    }
+                    event.setDamage(0);
+                }
 				double i = 0;
                 //plugin.damage is the hashmap from the main class
                 //check if the player damaged(player) is in the hashmap
@@ -125,13 +141,11 @@ public class EntityDamageByEntityListener implements Listener {
                 Player shooter = (Player) s.getShooter();
                 PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(shooter, plugin);
                 if (pso.getKitClass().equalsIgnoreCase("Freezer")){
-                    ((Player) event.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 80, 0));
+                    ((Player) event.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 120, 0));
                 }
                 else if (pso.getKitClass().equalsIgnoreCase("Assassin")){
                  Player damaged = (Player) event.getEntity();
-                    Location loc = damaged.getLocation();
-                   loc.add(loc.getX(), (loc.getY() + 1), loc.getZ());
-                   if (loc.getBlock().getType() == Material.AIR){
+                   final Location loc = damaged.getLocation();
                        final Material m = loc.getBlock().getType();
                        final Block b = loc.getBlock();
                        loc.getBlock().setType(Material.WEB);
@@ -141,7 +155,6 @@ public class EntityDamageByEntityListener implements Listener {
                                b.setType(m);
                            }
                        }, 100L);
-                   }
                 }
 
             }

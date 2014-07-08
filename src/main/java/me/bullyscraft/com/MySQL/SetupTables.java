@@ -99,6 +99,7 @@ public class SetupTables {
 
 
     public static void insertIntoTable(BullyPVP plugin, Player p, String kitname) {
+
         if (MySQL.getConnectionPool().getConfig().getJdbcUrl().contains("sqlite")){
             if (plugin.isBully1v1Enabled()){
                 MySQL.updateSQL("INSERT OR IGNORE INTO KitPVP (Username, Kills, Deaths, Coins, HighStreak, CurrentStreak, CurrentKit, " +
@@ -132,7 +133,7 @@ public class SetupTables {
         PlayerStatsObject pso = new PlayerStatsObject(UUID);
         pso.setUsername(username);
         pso.setUUID(UUID);
-        pso.setCoins(0);
+        pso.setCoins(100);
         pso.setKills(0);
         pso.setDeaths(0);
         pso.setHigheststreak(0);
@@ -150,7 +151,6 @@ public class SetupTables {
 
     public static void top10Kills(final BullyPVP plugin, final CommandSender player) {
         final String query = "SELECT * FROM KitPVP ORDER BY Kills DESC LIMIT 10";
-
         plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
 
             @Override

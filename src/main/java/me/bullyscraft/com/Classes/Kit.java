@@ -2,6 +2,7 @@ package me.bullyscraft.com.Classes;
 
 
 import me.bullyscraft.com.AbilityCountdowns.AbilityCountdown;
+import me.bullyscraft.com.AbilityCountdowns.AbilityCountdownManager;
 import me.bullyscraft.com.BullyPVP;
 import me.bullyscraft.com.Config;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
@@ -108,6 +109,7 @@ public class Kit {
         return kitName;
     }
     public void giveKit(final Player player){
+        AbilityCountdownManager.removeAbilityCountdown(player, plugin);
         if (armorType != null) {
         ItemStack helm = new ItemStack(Material.getMaterial(armorType + "_HELMET"));
         ItemStack chest = new ItemStack(Material.getMaterial(armorType + "_CHESTPLATE"));
@@ -217,6 +219,7 @@ public class Kit {
     }
 
     public void giveKit1v1(final Player player){
+        AbilityCountdownManager.removeAbilityCountdown(player, plugin);
         if (armorType != null) {
             ItemStack helm = new ItemStack(Material.getMaterial(armorType + "_HELMET"));
             ItemStack chest = new ItemStack(Material.getMaterial(armorType + "_CHESTPLATE"));
@@ -254,9 +257,10 @@ public class Kit {
         else if (armorItems != null){
             player.getInventory().setArmorContents(armorItems.toArray(new ItemStack[4]));
         }
+
         ItemStack weap = null;
         if (weapon != null) {
-        weap = new ItemStack(Material.getMaterial(weapon));
+            weap = new ItemStack(Material.getMaterial(weapon));
         }
 
         if (potions != null){
@@ -287,7 +291,7 @@ public class Kit {
             }
         }
 
-        if (weaponLore != null){
+        if (weap != null && weaponLore != null){
             ItemMeta meta = weap.getItemMeta();
             weaponLore = translateColorCodes(weaponLore);
             meta.setLore(weaponLore);

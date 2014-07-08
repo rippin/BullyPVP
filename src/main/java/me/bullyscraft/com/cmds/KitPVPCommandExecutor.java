@@ -106,6 +106,15 @@ public class KitPVPCommandExecutor implements CommandExecutor {
             new TopCommand(plugin).executeCommand(sender, cmd, args);
             return true;
         }
+        else if (cmd.getName().equalsIgnoreCase("reset")){
+            if (sender.hasPermission("Kit.Reset")) {
+            new ResetStatsCommand(plugin).executeCommand(sender, cmd, args);
+            }
+            else {
+                helper.noPermission();
+            }
+            return true;
+        }
 
 		else{
 			helper.unknownCommand();

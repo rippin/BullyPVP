@@ -6,19 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import me.bullyscraft.com.AbilityCountdowns.AbilityCountdown;
 import me.bullyscraft.com.Classes.KitManager;
-import me.bullyscraft.com.Listeners.ConsumeItemListener;
-import me.bullyscraft.com.Listeners.CustomHealthListener;
-import me.bullyscraft.com.Listeners.EntityDamageByEntityListener;
-import me.bullyscraft.com.Listeners.FoodChangeListener;
-import me.bullyscraft.com.Listeners.InventoryClickListener;
-import me.bullyscraft.com.Listeners.LoginListener;
-import me.bullyscraft.com.Listeners.PlayerDeathListener;
-import me.bullyscraft.com.Listeners.PlayerDropListener;
-import me.bullyscraft.com.Listeners.PlayerPickupListener;
-import me.bullyscraft.com.Listeners.PlayerRespawnListener;
-import me.bullyscraft.com.Listeners.RegainHealthListener;
+import me.bullyscraft.com.Listeners.*;
 import me.bullyscraft.com.MySQL.MySQL;
 import me.bullyscraft.com.MySQL.SetupTables;
 import me.bullyscraft.com.Scoreboards.BullyScoreboardManager;
@@ -30,6 +21,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import rippin.bullyscraft.com.Commands.KitPVP1v1CommandExecutor;
 
 public class BullyPVP extends JavaPlugin {
 
@@ -79,7 +71,7 @@ public void onEnable() {
 	pm.registerEvents(new LoginListener(this), this);
 	pm.registerEvents(new FoodChangeListener(this), this);
 	pm.registerEvents(new InventoryClickListener(this), this);
-	//pm.registerEvents(new PlayerChatListener(this), this);
+	pm.registerEvents(new PlayerCommandListener(this), this);
 	pm.registerEvents(new PlayerDropListener(this), this);
 	pm.registerEvents(new PlayerRespawnListener(this), this);
 	pm.registerEvents(new PlayerDeathListener(this), this);
@@ -113,6 +105,8 @@ public void onEnable() {
 	this.getCommand("strength").setExecutor(new KitPVPCommandExecutor(this));
 	this.getCommand("stats").setExecutor(new KitPVPCommandExecutor(this));
     this.getCommand("top").setExecutor(new KitPVPCommandExecutor(this));
+    this.getCommand("reset").setExecutor(new KitPVPCommandExecutor(this));
+
     if (Bully1v1 != null)
         logger.info("Bully1v1 has been found.");
 	
@@ -133,5 +127,16 @@ public void onEnable() {
         else{
            return true;
        }
+    }
+
+    public WorldGuardPlugin getWorldGuard() {
+        Plugin plugin = getServer().getPluginManager().getPlugin("WorldGuard");
+
+        // WorldGuard may not be loaded
+        if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
+            return null; // Maybe you want throw an exception instead
+        }
+
+        return (WorldGuardPlugin) plugin;
     }
 }

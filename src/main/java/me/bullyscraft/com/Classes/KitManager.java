@@ -172,11 +172,17 @@ public static Kit getKit(String name){
                      i.setItemMeta(meta);
                  }
                  else if (splitspace[j].toLowerCase().contains("Lore".toLowerCase())){
+                     meta = i.getItemMeta();
                      String splitLore[] = splitspace[j].split(":");
                          splitLore[1] = splitLore[1].replace("|", " ");
                          splitLore[1] = ChatColor.translateAlternateColorCodes('&', splitLore[1]);
                      if (splitLore[1].contains("_")){
                          String splitLoreSpace[] = splitLore[1].split("_");
+                         meta.setLore(Arrays.asList(splitLoreSpace));
+                     }
+                     else {
+                        String splitLoreSpace[] = new String[1];
+                         splitLoreSpace[0] = splitLore[1];
                          meta.setLore(Arrays.asList(splitLoreSpace));
                      }
                      i.setItemMeta(meta);

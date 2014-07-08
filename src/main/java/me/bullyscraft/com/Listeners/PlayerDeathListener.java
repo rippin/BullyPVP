@@ -60,7 +60,7 @@ public class PlayerDeathListener implements Listener {
             // Ability Pro
             if (psoKiller.getKitClass().equalsIgnoreCase("Pro")){
                 psoKiller.addCoins(5);
-                killer.sendMessage(ChatColor.AQUA + "You have received an extra " + ChatColor.GREEN + " coins");
+                killer.sendMessage(ChatColor.AQUA + "You have received an extra " + ChatColor.GREEN + "4" + ChatColor.AQUA + " coins");
             }
 
             // Ability Exo
@@ -71,8 +71,8 @@ public class PlayerDeathListener implements Listener {
             }
             if (psoDead.getKitClass().equalsIgnoreCase("Pyro")){
                 killer.setFireTicks(80);
-                killer.sendMessage(ChatColor.GREEN + "Set on fire by " + ChatColor.AQUA + dead.getName() + ChatColor.GREEN + "'s Pyro ability.");
-                dead.sendMessage(ChatColor.GREEN + "You set " + ChatColor.AQUA + killer.getName() + ChatColor.GREEN + "on fire using a Pyro ability.");
+                killer.sendMessage(ChatColor.GRAY + "Set on fire by " + ChatColor.RED + dead.getName() + ChatColor.GRAY + "'s Pyro ability.");
+                dead.sendMessage(ChatColor.GRAY + "You set " + ChatColor.RED + killer.getName() + ChatColor.GRAY + "on fire using a Pyro ability.");
             }
 
 
