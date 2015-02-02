@@ -28,6 +28,7 @@ public class TopCommand extends CommandInterface {
                 sender.sendMessage(ChatColor.GOLD + "/top coins" + ChatColor.RED + " View Top 10 Coins.");
                 sender.sendMessage(ChatColor.GOLD + "/top currentstreak" + ChatColor.RED + " View Top 10 Current Kill Streaks.");
                 sender.sendMessage(ChatColor.GOLD + "/top higheststreak" + ChatColor.RED + " View Top 10 Highest Kill Streaks.");
+                sender.sendMessage(ChatColor.GOLD + "/top rank" + ChatColor.RED + " View Players with the Top 10 Highest Rank");
                 if (plugin.isBully1v1Enabled()){
                     sender.sendMessage(ChatColor.GOLD + "/top 1v1wins" + ChatColor.RED + " View Top 10 1v1 Wins.");
                     sender.sendMessage(ChatColor.GOLD + "/top 1v1losses" + ChatColor.RED + " View Top 10 1v1 Losses.");
@@ -50,6 +51,10 @@ public class TopCommand extends CommandInterface {
                else if (args[0].equalsIgnoreCase("higheststreak")){
                    SetupTables.top10HighestStreak(plugin, sender);
                }
+               else if (args[0].equalsIgnoreCase("rank")){
+                   ViewStats.printTop10Rank(sender);
+               }
+
 
               else if (plugin.isBully1v1Enabled()) {
                if (args[0].equalsIgnoreCase("1v1wins")){

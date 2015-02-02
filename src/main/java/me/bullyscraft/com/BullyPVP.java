@@ -8,12 +8,14 @@ import java.util.logging.Logger;
 
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import me.bullyscraft.com.AbilityCountdowns.AbilityCountdown;
+import me.bullyscraft.com.Classes.KitGUI;
 import me.bullyscraft.com.Classes.KitManager;
 import me.bullyscraft.com.Listeners.*;
 import me.bullyscraft.com.MySQL.MySQL;
 import me.bullyscraft.com.MySQL.SetupTables;
 import me.bullyscraft.com.Scoreboards.BullyScoreboardManager;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
+import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
 import me.bullyscraft.com.Stats.TransferYmlToMySQL;
 import me.bullyscraft.com.cmds.KitPVPCommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -32,7 +34,6 @@ public class BullyPVP extends JavaPlugin {
  private Connection c = null;
  public static BullyPVP instance;
  private Plugin Bully1v1;
- public HashMap<AbilityCountdown, String> abilityCountdown = new HashMap<AbilityCountdown, String>();
 
 public void onEnable() {
     instance = this;
@@ -80,6 +81,7 @@ public void onEnable() {
 	pm.registerEvents(new EntityDamageByEntityListener(this), this);
 	pm.registerEvents(new RegainHealthListener(this), this);
 	pm.registerEvents(new CustomHealthListener(this), this);
+    pm.registerEvents(new ProjectileLaunchListener(this), this);
 	
 	this.getCommand("help").setExecutor(new KitPVPCommandExecutor(this));
 	this.getCommand("?").setExecutor(new KitPVPCommandExecutor(this));
@@ -106,6 +108,14 @@ public void onEnable() {
 	this.getCommand("stats").setExecutor(new KitPVPCommandExecutor(this));
     this.getCommand("top").setExecutor(new KitPVPCommandExecutor(this));
     this.getCommand("reset").setExecutor(new KitPVPCommandExecutor(this));
+    this.getCommand("projectileprotection").setExecutor(new KitPVPCommandExecutor(this));
+    this.getCommand("projprotect").setExecutor(new KitPVPCommandExecutor(this));
+    this.getCommand("fireprotection").setExecutor(new KitPVPCommandExecutor(this));
+    this.getCommand("fireprotect").setExecutor(new KitPVPCommandExecutor(this));
+    this.getCommand("unbreaking").setExecutor(new KitPVPCommandExecutor(this));
+    this.getCommand("featherfalling").setExecutor(new KitPVPCommandExecutor(this));
+    this.getCommand("purge").setExecutor(new KitPVPCommandExecutor(this));
+    this.getCommand("kitGUI").setExecutor(new KitPVPCommandExecutor(this));
 
     if (Bully1v1 != null)
         logger.info("Bully1v1 has been found.");

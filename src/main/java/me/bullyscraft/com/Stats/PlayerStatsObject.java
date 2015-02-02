@@ -3,6 +3,7 @@ package me.bullyscraft.com.Stats;
 import me.bullyscraft.com.Scoreboards.BullyScoreBoard;
 import me.bullyscraft.com.MySQL.MySQL;
 import me.bullyscraft.com.Scoreboards.BullyScoreboardManager;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -18,11 +19,12 @@ private String username;
 private UUID UUID;
 private String kitClass;
 private double kd;
-private Player player;
+private OfflinePlayer player;
 private int wins1v1 = 0;
 private int losses1v1 = 0;
 private int currentStreak1v1 = 0;
 private int highStreak1v1 = 0;
+private String ranking;
 
 
     public int getWins1v1() {
@@ -32,10 +34,10 @@ private int highStreak1v1 = 0;
     public void setWins1v1(int wins1v1) {
         this.wins1v1 = wins1v1;
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET Wins1v1 = " + wins1v1 + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Wins1v1 = " + wins1v1 + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET Wins1v1 = " + wins1v1 + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Wins1v1 = " + wins1v1 + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
     }
 
@@ -47,10 +49,10 @@ private int highStreak1v1 = 0;
         this.losses1v1 = losses1v1;
 
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET Losses1v1 = " + losses1v1 + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Losses1v1 = " + losses1v1 + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET Losses1v1 = " + losses1v1 + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Losses1v1 = " + losses1v1 + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
     }
 
@@ -62,10 +64,10 @@ private int highStreak1v1 = 0;
         this.currentStreak1v1 = currentStreak1v1;
 
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak1v1 = " + currentStreak1v1 + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak1v1 = " + currentStreak1v1 + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak1v1 = " + currentStreak1v1 + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak1v1 = " + currentStreak1v1 + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
     }
 
@@ -77,10 +79,10 @@ private int highStreak1v1 = 0;
         this.highStreak1v1 = highStreak1v1;
 
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET HighStreak1v1 = " + highStreak1v1 + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET HighStreak1v1 = " + highStreak1v1 + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET HighStreak1v1 = " + highStreak1v1 + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET HighStreak1v1 = " + highStreak1v1 + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
 
     }
@@ -100,10 +102,10 @@ private int highStreak1v1 = 0;
     public void setKills(int kills) {
         this.kills = kills;
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET Kills = " + kills + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Kills = " + kills + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET Kills = " + kills + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Kills = " + kills + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
 
     }
@@ -115,10 +117,10 @@ private int highStreak1v1 = 0;
     public void setDeaths(int deaths) {
         this.deaths = deaths;
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET Deaths = " + deaths + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Deaths = " + deaths + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET Deaths = " + deaths + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Deaths = " + deaths + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
 
     }
@@ -130,10 +132,10 @@ private int highStreak1v1 = 0;
     public void setCoins(int coins) {
         this.coins = coins;
      if (UUID != null) {
-        MySQL.updateSQL("UPDATE KitPVP SET Coins = " + coins + " WHERE UUID = '" + getUUID().toString() + "';");
+        MySQL.updateSQL("UPDATE KitPVP SET Coins = " + coins + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
      }
     else {
-         MySQL.updateSQL("UPDATE KitPVP SET Coins = " + coins + " WHERE Username = '" + getUsername() + "';");
+         MySQL.updateSQL("UPDATE KitPVP SET Coins = " + coins + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
      }
     }
 
@@ -144,10 +146,10 @@ private int highStreak1v1 = 0;
     public void setHigheststreak(int higheststreak) {
         this.higheststreak = higheststreak;
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET HighStreak = " + higheststreak + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET HighStreak = " + higheststreak + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET HighStreak = " + higheststreak + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET HighStreak = " + higheststreak + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
 
     }
@@ -159,10 +161,10 @@ private int highStreak1v1 = 0;
     public void setCurrentstreak(int currentstreak) {
         this.currentstreak = currentstreak;
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak = " + currentstreak + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak = " + currentstreak + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak = " + currentstreak + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET CurrentStreak = " + currentstreak + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
 
     }
@@ -173,7 +175,7 @@ private int highStreak1v1 = 0;
 
     public void setUsername(String username) {
         this.username = username;
-        MySQL.updateSQL("UPDATE KitPVP SET Username = '" + username + "' WHERE UUID = '" + getUUID().toString() + "';");
+        MySQL.updateSQL("UPDATE KitPVP SET Username = '" + username + "' WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
 
     }
 
@@ -183,7 +185,7 @@ private int highStreak1v1 = 0;
 
     public void setUUID(UUID UUID) {
         this.UUID = UUID;
-        MySQL.updateSQL("UPDATE KitPVP SET UUID = '" + UUID.toString() + "' WHERE Username = '" + getUsername() + "';");
+        MySQL.updateSQL("UPDATE KitPVP SET UUID = '" + UUID.toString() + "' WHERE Username = '" + getUsername() + "' LIMIT 1;");
 
     }
 
@@ -194,10 +196,10 @@ private int highStreak1v1 = 0;
     public void setKitClass(String kitClass) {
         this.kitClass = kitClass;
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET CurrentKit = '" + kitClass + "' WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET CurrentKit = '" + kitClass + "' WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET CurrentKit = '" + kitClass + "' WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET CurrentKit = '" + kitClass + "' WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
 
     }
@@ -216,21 +218,21 @@ private int highStreak1v1 = 0;
         this.kd = kd;
     }
 
-    public void setPlayer(Player player){
+    public void setPlayer(OfflinePlayer player){
         this.player = player;
     }
 
-    public Player getPlayer(){
+    public OfflinePlayer getPlayer(){
         return player;
     }
 
     public void addCoins(int coins){
         this.coins = this.coins + coins;
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
         BullyScoreBoard b = BullyScoreboardManager.getBullyScoreboard(UUID.toString());
         b.setPSO(this);
@@ -241,10 +243,10 @@ private int highStreak1v1 = 0;
     public void removeCoins(int coins){
         this.coins = this.coins - coins;
         if (UUID != null) {
-            MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE UUID = '" + getUUID().toString() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE UUID = '" + getUUID().toString() + "' LIMIT 1;");
         }
         else {
-            MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE Username = '" + getUsername() + "';");
+            MySQL.updateSQL("UPDATE KitPVP SET Coins = " + this.coins + " WHERE Username = '" + getUsername() + "' LIMIT 1;");
         }
         BullyScoreBoard b = BullyScoreboardManager.getBullyScoreboard(UUID.toString());
         b.setPSO(this);
@@ -276,5 +278,11 @@ private int highStreak1v1 = 0;
 
     }
 
+    public String getRanking() {
+        return ranking;
+    }
 
+    public void setRanking(String ranking) {
+        this.ranking = ranking;
+    }
 }

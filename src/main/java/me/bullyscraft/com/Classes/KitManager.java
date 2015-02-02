@@ -17,7 +17,7 @@ import java.util.*;
 
 public class KitManager {
 
-public static List<Kit> getAllKits = new ArrayList<Kit>();
+private static List<Kit> getAllKits = new ArrayList<Kit>();
 private static Kit defaultKit;
 
 
@@ -34,6 +34,7 @@ public static void loadKits(BullyPVP plugin){
         plugin.logger.info(k.getName() + " kit has been loaded from file");
 
     }
+    KitGUI.createGuiInventory(getAllKits().size(), getAllKits());
 }
  public static void reloadKits(BullyPVP plugin){
      getAllKits.clear();
@@ -49,6 +50,7 @@ public static void loadKits(BullyPVP plugin){
          plugin.logger.info(k.getName() + " kit has been loaded from file");
 
      }
+     KitGUI.createGuiInventory(getAllKits().size(), getAllKits());
  }
 
 
@@ -123,7 +125,7 @@ public static Kit getKit(String name){
         for (String i : items){
             if (i.contains(" ")) {
             String splitspace[] = i.split("\\s+");
-            ItemStack item = new ItemStack(Material.getMaterial(splitspace[0]));
+             ItemStack item = new ItemStack(Material.getMaterial(splitspace[0]));
            for (int j = 1; j < splitspace.length; j++){
                if (splitspace[j].contains("@")){
                    String split[] = splitspace[j].split("@");

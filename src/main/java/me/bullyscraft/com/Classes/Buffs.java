@@ -194,8 +194,10 @@ public class Buffs {
                 for (ItemStack item : player.getInventory().getArmorContents()) {
                     item.setDurability((short) 0);
                 }
+                if (k.getWeapon() != null) {
                 ItemStack i = player.getInventory().getItem(0);
                 i.setDurability((short) 0);
+                }
                 player.sendMessage(ChatColor.GREEN + "Items repaired!");
             }
         }

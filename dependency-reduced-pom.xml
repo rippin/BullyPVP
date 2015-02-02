@@ -13,6 +13,7 @@
         <directory>${basedir}/src/main/resources/</directory>
         <includes>
           <include>plugin.yml</include>
+          <include>prefixes.yml</include>
         </includes>
       </resource>
     </resources>
@@ -61,11 +62,21 @@
       <url>http://repo.md-5.net/content/groups/public/</url>
     </repository>
     <repository>
-      <id>confuser-repo</id>
-      <url>http://jamesmortemore.com:8080/plugin/repository/everything</url>
+      <id>thirdparty</id>
+      <url>http://168.235.64.202:8069/nexus/content/repositories/thirdparty/</url>
+    </repository>
+    <repository>
+      <id>sk89q-repo</id>
+      <url>http://maven.sk89q.com/repo/</url>
     </repository>
   </repositories>
   <dependencies>
+    <dependency>
+      <groupId>me.confuser</groupId>
+      <artifactId>BarAPI</artifactId>
+      <version>3.2</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
@@ -73,11 +84,43 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>com.sk89q</groupId>
+      <artifactId>worldguard</artifactId>
+      <version>5.9</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sk89q</groupId>
+      <artifactId>worldedit</artifactId>
+      <version>LATEST</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>truezip</artifactId>
+          <groupId>de.schlichtherle</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>js</artifactId>
+          <groupId>rhino</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jsr305</artifactId>
+          <groupId>com.google.code.findbugs</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
       <groupId>rippin.bullyscaft.com</groupId>
       <artifactId>Bully1v1</artifactId>
       <version>LATEST</version>
       <scope>system</scope>
-      <systemPath>C:\Users\EF\Desktop\java\BullyPVP/src/Bully1v1.jar</systemPath>
+      <systemPath>F:\Development\java\BullyPVP/src/Bully1v1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.bukkit</groupId>
+      <artifactId>craftbukkit</artifactId>
+      <version>LATEST</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 </project>

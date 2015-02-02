@@ -1,22 +1,26 @@
 package me.bullyscraft.com.Listeners;
-
+import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import me.bullyscraft.com.AbilityCountdowns.BleedCountdown;
 import me.bullyscraft.com.AssistHandler;
 import me.bullyscraft.com.BullyPVP;
 
+import me.bullyscraft.com.Particles.ParticlesHandler;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
+
 import org.bukkit.ChatColor;
-import org.bukkit.EntityEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Egg;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
+
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -33,7 +37,7 @@ public class EntityDamageByEntityListener implements Listener {
 	}
 
 	@SuppressWarnings("static-access")
-	@EventHandler(priority = EventPriority.HIGHEST)
+	@EventHandler
 	public void onPlayerDamage(EntityDamageByEntityEvent event) {
         AssistHandler assist;
 		if (event.getEntity() instanceof Player
@@ -79,11 +83,11 @@ public class EntityDamageByEntityListener implements Listener {
 		}
 		//Check if damaged by arrow then get shooter and add the damage
 		//same thing of previous code but with arrow you have to get shooter and stuff
-		else if (event.getEntity() instanceof Player && event.getDamager() instanceof Arrow) {
+		else if (event.getEntity() instanceof Player && event.getDamager() instanceof Arrow && !checkiFPlayerInWGRegion(event.getEntity().getLocation())) {
 			Player player = (Player) event.getEntity();
 			
 			Arrow a = (Arrow) event.getDamager();
-			
+			Location arrowLoc = a.getLocation();
 			
 			
 			if (a.getShooter() instanceof Player){
@@ -91,27 +95,23 @@ public class EntityDamageByEntityListener implements Listener {
                 PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(damager, plugin);
                 if (pso.getKitClass().equalsIgnoreCase("Medic")){
                     if (player.getHealth() != player.getMaxHealth()){
-                    if (player.getHealth() + event.getDamage() < player.getMaxHealth()) {
-                    player.setHealth(player.getHealth() + event.getDamage());
+                    double heal = event.getDamage()/3;
+                        if (player.getHealth() + heal < player.getMaxHealth()) {
+                    player.setHealth(player.getHealth() + heal);
                     }
                       else {
                             player.setHealth(player.getMaxHealth());
                         }
                         Location l = player.getLocation();
                         l.setY(400);
-                    player.sendMessage(ChatColor.AQUA + "Healed " + event.getDamage() + " by " + ChatColor.GREEN + damager.getName() + "'s ability.");
-                    final Wolf w = (Wolf) a.getWorld().spawnEntity(l, EntityType.WOLF);
-                    w.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000, 0));
-                    w.teleport(player.getLocation());
-                        plugin.getServer().getScheduler().runTaskLater(plugin, new BukkitRunnable() {
-                            @Override
-                            public void run() {
-                                w.playEffect(EntityEffect.WOLF_HEARTS);
-                                w.remove();
-                            }
-                        }, 3L);
+                    player.sendMessage(ChatColor.AQUA + "Healed " + String.format( "%.2f", heal) + " by " + ChatColor.GREEN + damager.getName() + "'s ability.");
+                        try {
+                            ParticlesHandler.sendParticles(arrowLoc, "heart", plugin);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                    event.setDamage(0);
+                    event.setDamage(0.0);
                 }
 				double i = 0;
                 //plugin.damage is the hashmap from the main class
@@ -136,40 +136,48 @@ public class EntityDamageByEntityListener implements Listener {
         //snowball abilities
         else if (event.getEntity() instanceof Player && event.getDamager()instanceof Snowball){
             Snowball s = (Snowball) event.getDamager();
-
             if (s.getShooter() instanceof  Player){
+            if (!checkiFPlayerInWGRegion(event.getEntity().getLocation())) {
                 Player shooter = (Player) s.getShooter();
                 PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(shooter, plugin);
                 if (pso.getKitClass().equalsIgnoreCase("Freezer")){
-                    ((Player) event.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 120, 0));
+                    ((Player) event.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 120, 1));
+                }
+                else if (pso.getKitClass().equalsIgnoreCase("Gravity")){
+                    ((Player) event.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 150, 128));
                 }
                 else if (pso.getKitClass().equalsIgnoreCase("Assassin")){
-                 Player damaged = (Player) event.getEntity();
-                   final Location loc = damaged.getLocation();
+                 final Player damaged = (Player) event.getEntity();
+                   if (damaged.hasMetadata("assassin")){
+                       return;
+                   }
+                       final Location loc = damaged.getLocation();
                        final Material m = loc.getBlock().getType();
-                       final Block b = loc.getBlock();
+                        damaged.setMetadata("assassin", new FixedMetadataValue(plugin, ""));
                        loc.getBlock().setType(Material.WEB);
-                       plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+                       plugin.getServer().getScheduler().runTaskLater(plugin, new BukkitRunnable() {
                            @Override
                            public void run() {
-                               b.setType(m);
+                               loc.getBlock().setType(m);
+                               damaged.removeMetadata("assassin", plugin);
                            }
                        }, 100L);
                 }
-
+               }
             }
         }
         else if (event.getEntity() instanceof Player && event.getDamager() instanceof Egg){
             Egg e = (Egg) event.getDamager();
 
             if (e.getShooter() instanceof  Player){
+                if (!checkiFPlayerInWGRegion(event.getEntity().getLocation())) {
                 Player shooter = (Player) e.getShooter();
                 PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(shooter, plugin);
                 if (pso.getKitClass().equalsIgnoreCase("Pyro")){
                   event.getEntity().setFireTicks(80);
 
                 }
-
+                }
             }
         }
 	}
@@ -185,7 +193,20 @@ public class EntityDamageByEntityListener implements Listener {
 
     }
 
+    public boolean checkiFPlayerInWGRegion(Location loc){
+        if (plugin.getWorldGuard() == null){
+            return false;
+        }
+        ApplicableRegionSet ars = plugin.getWorldGuard().
+                getRegionManager(loc.getWorld()).getApplicableRegions(loc);
+        for (ProtectedRegion pr : ars){
+            if (pr.getId().contains("spawn")){
+                return true;
+            }
+        }
 
+        return false;
+    }
 
 
 }

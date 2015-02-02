@@ -63,7 +63,9 @@ public class BullyScoreboardManager {
 
     public static void addPlayerToAllScoreboards(Player player){
         for (BullyScoreBoard b : scoreBoards){
+            if (!b.getUUID().equalsIgnoreCase(player.getUniqueId().toString())){
             b.addPlayerToScoreboard(player);
+            }
         }
     }
 

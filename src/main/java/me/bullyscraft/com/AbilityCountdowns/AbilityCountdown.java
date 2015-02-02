@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +28,10 @@ public class AbilityCountdown {
     }
 
     public void startAssassinCountdown(){
-        final int realDelay = delay;
-        if (plugin.abilityCountdown.containsValue(player.getUniqueId().toString())){
+        if (AbilityCountdownManager.abilityCountdown.containsValue(player.getUniqueId().toString())){
             return;
         }
-        taskid =  plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
+        taskid =  plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new BukkitRunnable() {
             @Override
             public void run() {
                 if (delay <= 0) {
@@ -39,7 +39,7 @@ public class AbilityCountdown {
                         cancelTask(taskid);
                     }
                     else {
-                        plugin.abilityCountdown.put(aC, player.getUniqueId().toString());
+                        AbilityCountdownManager.abilityCountdown.put(aC, player.getUniqueId().toString());
                         PlayerInventory inv = player.getInventory();
                         for (int i = 0; i <= 2; i++){
                             if (inv.contains(Material.SNOW_BALL, 2)){
@@ -57,22 +57,20 @@ public class AbilityCountdown {
                                 inv.addItem(item);
                             }
                         }
-
+                        cancelTask(taskid);
                     }
-                    delay = realDelay;
                 }
                 --delay;
             }
-        }, 20L, 20L);
+        }, 0L, 20L);
     }
 
     public void startFreezerCountdown(){
-        final int realDelay = delay;
-        if (plugin.abilityCountdown.containsValue(player.getUniqueId().toString())){
+        if (AbilityCountdownManager.abilityCountdown.containsValue(player.getUniqueId().toString())){
 
             return;
         }
-        taskid =  plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
+        taskid =  plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new BukkitRunnable() {
             @Override
             public void run() {
                 if (delay <= 0) {
@@ -80,7 +78,7 @@ public class AbilityCountdown {
                         cancelTask(taskid);
                     }
                     else {
-                        plugin.abilityCountdown.put(aC, player.getUniqueId().toString());
+                        AbilityCountdownManager.abilityCountdown.put(aC, player.getUniqueId().toString());
                         PlayerInventory inv = player.getInventory();
                         for (int i = 0; i <= 2; i++){
                             if (inv.contains(Material.SNOW_BALL, 2)){
@@ -97,21 +95,19 @@ public class AbilityCountdown {
                                 inv.addItem(item);
                             }
                         }
-
+                        cancelTask(taskid);
                     }
-                    delay = realDelay;
                 }
                 --delay;
             }
-        }, 20L, 20L);
+        }, 0L, 20L);
     }
 
     public void startPyroCountdown(){
-        final int realDelay = delay;
-        if (plugin.abilityCountdown.containsValue(player.getUniqueId().toString())){
+        if (AbilityCountdownManager.abilityCountdown.containsValue(player.getUniqueId().toString())){
             return;
         }
-        taskid =  plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
+        taskid =  plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new BukkitRunnable() {
             @Override
             public void run() {
                 if (delay <= 0) {
@@ -119,7 +115,7 @@ public class AbilityCountdown {
                         cancelTask(taskid);
                     }
                     else {
-                        plugin.abilityCountdown.put(aC, player.getUniqueId().toString());
+                        AbilityCountdownManager.abilityCountdown.put(aC, player.getUniqueId().toString());
                         PlayerInventory inv = player.getInventory();
                         for (int i = 0; i <= 2; i++){
                             if (inv.contains(Material.EGG, 2)){
@@ -135,18 +131,53 @@ public class AbilityCountdown {
                                 inv.addItem(item);
                             }
                         }
-
+                        cancelTask(taskid);
                     }
-                    delay = realDelay;
                 }
                 --delay;
             }
-        }, 20L, 20L);
+        }, 0L, 20L);
     }
 
+    public void startGravCountdown(){
+        if (AbilityCountdownManager.abilityCountdown.containsValue(player.getUniqueId().toString())){
+            return;
+        }
+        taskid =  plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (delay <= 0) {
+                    if (player == null || !player.isOnline() || (!PlayerStatsObjectManager.getPSO(player, plugin).getKitClass().equalsIgnoreCase("Gravity"))){
+                        cancelTask(taskid);
+                    }
+                    else {
+                        AbilityCountdownManager.abilityCountdown.put(aC, player.getUniqueId().toString());
+                        PlayerInventory inv = player.getInventory();
+                        for (int i = 0; i <= 2; i++){
+                            if (inv.contains(Material.SNOW_BALL, 2)){
+                                break;
+                            }
+                            else {
+                                ItemStack item = new ItemStack(Material.SNOW_BALL);
+                                ItemMeta meta = item.getItemMeta();
+                                meta.setDisplayName(ChatColor.DARK_GRAY + "Gravity ball");
+                                item.setItemMeta(meta);
+                                List<String> lore = new ArrayList<String>();
+                                lore.add(ChatColor.AQUA + "Players who get hit");
+                                lore.add(ChatColor.AQUA + "cannot jump for a couple seconds.");
+                                inv.addItem(item);
+                            }
+                        }
+                        cancelTask(taskid);
+                    }
+                }
+                --delay;
+            }
+        }, 0L, 20L);
+    }
     public void cancelTask(int taskid){
         plugin.getServer().getScheduler().cancelTask(taskid);
-        if (plugin.abilityCountdown.containsKey(this))
-        plugin.abilityCountdown.remove(this);
+        if (AbilityCountdownManager.abilityCountdown.containsKey(this))
+            AbilityCountdownManager.abilityCountdown.remove(this);
     }
 }

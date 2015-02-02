@@ -1,7 +1,9 @@
 package me.bullyscraft.com.MySQL;
 
 import me.bullyscraft.com.BullyPVP;
+import me.bullyscraft.com.Scoreboards.BullyScoreboardManager;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
+import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -90,7 +92,9 @@ public class SetupTables {
                     MySQL.closeResultSet(r);
                     MySQL.closePreparedStatement(s);
                     MySQL.closeConnection(c);
-
+                    System.out.print(plugin.playerStats.size() + " IS SIZE ");
+                    //RANKING HERE TO MAKE SURE ITS AFTER DATABASECACHE
+                    PlayerStatsObjectManager.cacheRanking(36000);
                 } catch (SQLException e) {
 
                     e.printStackTrace();

@@ -30,7 +30,7 @@ public class Wipe {
 			player.removePotionEffect(pe.getType());
 		}
 	}
-
+/*
 	public static void removeKitItems(Player player){
 		PlayerInventory inv = player.getInventory();
         PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(player, BullyPVP.instance);
@@ -74,8 +74,25 @@ public class Wipe {
 
      }
 
+*/
 
+    public static void removeKitItems(Player player){
+        PlayerInventory inv = player.getInventory();
+            for (ItemStack i: inv){
+                if (i != null){
+                    if (i.getType() != Material.MUSHROOM_SOUP)
+                        inv.remove(i);
+                }
+            }
+            inv.setArmorContents(null);
 
+        for(PotionEffect pe : player.getActivePotionEffects()){
+            player.removePotionEffect(pe.getType());
+        }
+        if (inv.getArmorContents() != null){
+            inv.setArmorContents(null);
+        }
+    }
 
 
 

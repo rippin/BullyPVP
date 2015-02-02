@@ -23,13 +23,13 @@ public class StatsCommand extends CommandInterface {
 		if (sender instanceof Player) {
 			if (args.length == 0) {
                 PlayerStatsObject pso = PlayerStatsObjectManager.getPSO((Player) sender, plugin);
-				ViewStats.viewStats((Player) sender, pso);
+				ViewStats.viewStats( sender, pso);
 
 			} else if (args.length == 1) {
                 PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(args[0], plugin);
                 if (pso != null) {
 
-					ViewStats.viewStats((Player) sender, pso);
+					ViewStats.viewStats( sender, pso);
 				} else {
 					sender.sendMessage(ChatColor.RED
 							+ "Could not find player, spelling mistake?");

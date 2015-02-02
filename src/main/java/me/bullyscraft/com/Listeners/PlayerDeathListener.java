@@ -1,6 +1,7 @@
 package me.bullyscraft.com.Listeners;
 
 import me.bullyscraft.com.*;
+import me.bullyscraft.com.AbilityCountdowns.BleedCountdownManager;
 import me.bullyscraft.com.Classes.Kit;
 import me.bullyscraft.com.Classes.KitManager;
 import me.bullyscraft.com.Scoreboards.BullyScoreBoard;
@@ -54,20 +55,22 @@ public class PlayerDeathListener implements Listener {
 
             //Ability Tank
 
+            BleedCountdownManager.hasCountdownAndCancel(dead);
+
             if (psoKiller.getKitClass().equalsIgnoreCase("Tank")){
                 killer.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 80, 0));
             }
             // Ability Pro
             if (psoKiller.getKitClass().equalsIgnoreCase("Pro")){
                 psoKiller.addCoins(5);
-                killer.sendMessage(ChatColor.AQUA + "You have received an extra " + ChatColor.GREEN + "4" + ChatColor.AQUA + " coins");
+                killer.sendMessage(ChatColor.AQUA + "You have received an extra " + ChatColor.GREEN + "5" + ChatColor.AQUA + " coins");
             }
 
             // Ability Exo
             if (psoKiller.getKitClass().equalsIgnoreCase("Exo")){
-                killer.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 80, 1));
-                killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 80, 2));
-                killer.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 80, 1));
+                killer.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 140, 1));
+                killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 140, 2));
+                killer.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 140, 1));
             }
             if (psoDead.getKitClass().equalsIgnoreCase("Pyro")){
                 killer.setFireTicks(80);
@@ -99,10 +102,7 @@ public class PlayerDeathListener implements Listener {
 			event.setDeathMessage(null);
             //getting kills and deaths;
 			int deadDeaths = psoDead.getDeaths();
-			int deadKills = psoDead.getKills();
-
 			int killerKills = psoKiller.getKills();
-			int killerDeaths = psoKiller.getDeaths();
 			int streak = psoKiller.getCurrentstreak();
 			int highStreak = psoKiller.getHigheststreak();
 
@@ -125,47 +125,47 @@ public class PlayerDeathListener implements Listener {
 			
 			if (streak == 5){
 			 String s  = ChatColor.AQUA + killer.getName() + ChatColor.RED +" is on a 5 kill streak!!!";
-                for (Player p : Bukkit.getOnlinePlayers())
+                for (Player p : plugin.getServer().getOnlinePlayers())
                 BarScheduler.setBarMessage(p, s, 5, plugin);
 			}
 			
 			if (streak == 10){
 				String s = ChatColor.AQUA + killer.getName() + ChatColor.RED +" is on a 10 kill streak!!!";
-                for (Player p : Bukkit.getOnlinePlayers())
+                for (Player p : plugin.getServer().getOnlinePlayers())
                     BarScheduler.setBarMessage(p, s, 5, plugin);
 			}
 			
 			if (streak == 15){
 				String s = ChatColor.AQUA + killer.getName() + ChatColor.RED +" is on a 15 kill streak!!! eZZZZZZ";
-                for (Player p : Bukkit.getOnlinePlayers())
+                for (Player p : plugin.getServer().getOnlinePlayers())
                     BarScheduler.setBarMessage(p, s, 5, plugin);
 			}
 			
 			if (streak == 20){
 				String s = ChatColor.RED + "OH MY GOD! " + ChatColor.AQUA + killer.getName() + ChatColor.RED + " is on a 20 killstreak!";
-                for (Player p : Bukkit.getOnlinePlayers())
+                for (Player p : plugin.getServer().getOnlinePlayers())
                     BarScheduler.setBarMessage(p, s, 5, plugin);
             }
 			
 			if (streak == 25){
 				String s = ChatColor.RED + "If this was COD " + ChatColor.AQUA + killer.getName() + ChatColor.RED +  " would be calling in a NUKE! 25 killstreak!";
-                for (Player p : Bukkit.getOnlinePlayers())
+                for (Player p : plugin.getServer().getOnlinePlayers())
                     BarScheduler.setBarMessage(p, s, 5, plugin);
             }
             if (streak == 35){
                 String s = ChatColor.RED + "Oh my... " + ChatColor.AQUA + killer.getName() + ChatColor.RED +  " is on a 35 killstreak!";
-                for (Player p : Bukkit.getOnlinePlayers())
+                for (Player p :plugin.getServer().getOnlinePlayers())
                     BarScheduler.setBarMessage(p, s, 5, plugin);
             }
 
             if (streak == 50){
                String s = ChatColor.RED + "Sharkeisha nooo! " + ChatColor.AQUA + killer.getName() + ChatColor.RED +  " is on a 50 killstreak!";
-                for (Player p : Bukkit.getOnlinePlayers())
+                for (Player p : plugin.getServer().getOnlinePlayers())
                     BarScheduler.setBarMessage(p, s, 5, plugin);
             }
             if (streak == 100){
                 String s = ChatColor.RED + "HOLY SHIT. " + ChatColor.AQUA + killer.getName() + ChatColor.RED +  " is on a 100 killstreak!";
-                for (Player p : Bukkit.getOnlinePlayers())
+                for (Player p : plugin.getServer().getOnlinePlayers())
                     BarScheduler.setBarMessage(p, s, 5, plugin);
             }
 			

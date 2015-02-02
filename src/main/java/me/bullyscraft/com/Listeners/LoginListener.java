@@ -14,11 +14,14 @@ import me.bullyscraft.com.Spawn;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.util.Iterator;
 
 public class LoginListener implements Listener {
 
@@ -56,24 +59,32 @@ public class LoginListener implements Listener {
             plugin.logger.info("UUID set for " + player.getName());
          }
      }
+        if (!player.getInventory().contains(Material.SNOW_BALL) && !player.getInventory().contains(Material.EGG)){
 
+
+        if (pso.getKitClass().equalsIgnoreCase("Freezer")){
+            new AbilityCountdown(5, plugin, player).startFreezerCountdown();
+        }
+        else if (pso.getKitClass().equalsIgnoreCase("Assassin")){
+            new AbilityCountdown(5, plugin, player).startAssassinCountdown();
+        }
+        else if (pso.getKitClass().equalsIgnoreCase("Pyro")){
+            new AbilityCountdown(5, plugin, player).startPyroCountdown();
+        }
+        else if (pso.getKitClass().equalsIgnoreCase("Gravity")){
+            new AbilityCountdown(5, plugin, player).startGravCountdown();
+        }
+       }
         pso.setPlayer(player);
         pso.setUsername(player.getName()); //Set username every join in case of name change.
 
-		BullyScoreBoard b = new BullyScoreBoard(player, pso);
-		b.update();
-        BullyScoreboardManager.getAllBullyScoreboards().add(b); // add le scoreboard
-        BullyScoreboardManager.addPlayerToAllScoreboards(player); //Update all scoreboards
-		if (pso.getKitClass().equalsIgnoreCase("Freezer")){
-        new AbilityCountdown(120, plugin, player).startFreezerCountdown();
-        }
-        else if (pso.getKitClass().equalsIgnoreCase("Assassin")){
-            new AbilityCountdown(120, plugin, player).startAssassinCountdown();
-        }
-        else if (pso.getKitClass().equalsIgnoreCase("Pyro")){
-            new AbilityCountdown(120, plugin, player).startPyroCountdown();
-        }
-
+        final BullyScoreBoard b = new BullyScoreBoard(player, pso);
+        plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+            @Override
+            public void run() {
+                b.update();
+            }
+        },3L);
         player.teleport(Spawn.getSpawnLoc());
 
 
@@ -83,11 +94,13 @@ public class LoginListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event){
        String uuid = event.getPlayer().getUniqueId().toString();
+
+        Iterator<BullyScoreBoard> it = BullyScoreboardManager.getAllBullyScoreboards().iterator();
+        while (it.hasNext()){
+            it.next().removeTeam(event.getPlayer());
+        }
         BullyScoreboardManager.removeBullyScoreboard(uuid); // remove scoreboards
 
-        if (BullyScoreBoard.prefixUUIDList.contains(uuid)){
-            BullyScoreBoard.prefixUUIDList.remove(uuid);
-        }
     }
 
 }

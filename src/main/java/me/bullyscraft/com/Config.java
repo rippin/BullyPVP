@@ -3,6 +3,7 @@ package me.bullyscraft.com;
 
 
 import me.bullyscraft.com.Classes.KitManager;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
@@ -61,6 +62,7 @@ public class Config {
         lore2.add("2");
         lore2.add("3");
         List<String> potions = new ArrayList<String>();
+        getConfig().set("Default-Kit-Icon", Material.IRON_AXE);
         getConfig().set("Version", 2.0);
         getConfig().set("Transferred-Stats", false);
         getConfig().set("MySQL.Hostname", "localhost");

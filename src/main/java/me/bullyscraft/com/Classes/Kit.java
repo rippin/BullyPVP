@@ -35,6 +35,7 @@ public class Kit {
     private String kitDescription;
     private BullyPVP plugin;
     private String weaponName;
+    private ItemStack kitIcon;
 
     public Kit(String kitName) {
         this.kitName = kitName;
@@ -63,6 +64,15 @@ public class Kit {
         }
         plugin = BullyPVP.instance;
         loadBuffs();
+
+        kitIcon = new ItemStack(Material.getMaterial(Config.getConfig().getString("Kits." + getName() + ".Icon")));
+        if (kitIcon == null){
+            kitIcon = new ItemStack(Material.getMaterial(Config.getConfig().getString("Default-Kit-Icon"))); // here
+        }
+        ItemMeta meta = kitIcon.getItemMeta();
+        meta.setDisplayName(ChatColor.GOLD + kitName);
+        meta.setLore(Arrays.asList(kitDescription));
+        kitIcon.setItemMeta(meta);
     }
 
 
@@ -109,7 +119,7 @@ public class Kit {
         return kitName;
     }
     public void giveKit(final Player player){
-        AbilityCountdownManager.removeAbilityCountdown(player, plugin);
+        AbilityCountdownManager.removeAbilityCountdown(player);
         if (armorType != null) {
         ItemStack helm = new ItemStack(Material.getMaterial(armorType + "_HELMET"));
         ItemStack chest = new ItemStack(Material.getMaterial(armorType + "_CHESTPLATE"));
@@ -196,8 +206,10 @@ public class Kit {
 
        player.getInventory().setItem(0, weap);
         if (items != null){
+         int j = 1;
          for (ItemStack i : KitManager.parseItems(items)){
-             player.getInventory().addItem(i);
+             player.getInventory().setItem(j,i);
+             j++;
          }
 
         }
@@ -217,117 +229,6 @@ public class Kit {
         PlayerStatsObjectManager.getPSO(player, plugin).setKitClass(getName());
 
     }
-
-    public void giveKit1v1(final Player player){
-        AbilityCountdownManager.removeAbilityCountdown(player, plugin);
-        if (armorType != null) {
-            ItemStack helm = new ItemStack(Material.getMaterial(armorType + "_HELMET"));
-            ItemStack chest = new ItemStack(Material.getMaterial(armorType + "_CHESTPLATE"));
-            ItemStack pants = new ItemStack(Material.getMaterial(armorType + "_LEGGINGS"));
-            ItemStack boots = new ItemStack(Material.getMaterial(armorType + "_BOOTS"));
-            List<ItemStack> armor = new ArrayList<ItemStack>();
-            armor.add(boots);
-            armor.add(pants);
-            armor.add(chest);
-            armor.add(helm);
-
-            if (armorEnchants != null){
-                for (String s : armorEnchants) {
-                    if (s.contains(":")) {
-                        String[] split = s.split(":");
-                        Enchantment e = Enchantment.getByName(Buffs.getOfficialEnchantmentName(split[0].toUpperCase()));
-                        for (ItemStack i : armor) {
-                            i.addUnsafeEnchantment(e, Integer.parseInt(split[1]));
-
-                        }
-                    }
-                }
-            }
-            if (armorLore != null){
-                for (ItemStack i : armor){
-                    ItemMeta meta = i.getItemMeta();
-                    armorLore = translateColorCodes(armorLore);
-
-                    meta.setLore(armorLore);
-                    i.setItemMeta(meta);
-                }
-            }
-            player.getInventory().setArmorContents(armor.toArray(new ItemStack[4]));
-        }
-        else if (armorItems != null){
-            player.getInventory().setArmorContents(armorItems.toArray(new ItemStack[4]));
-        }
-
-        ItemStack weap = null;
-        if (weapon != null) {
-            weap = new ItemStack(Material.getMaterial(weapon));
-        }
-
-        if (potions != null){
-            for (String s : potions) {
-                if (s.contains(":")) {
-                    final String[] split = s.split(":");
-                    plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
-                        @Override
-                        public void run() {
-                            player.addPotionEffect(new PotionEffect(PotionEffectType.getByName(Buffs.getOfficialPotionName(split[0])),
-                                    Integer.parseInt(split[1]), Integer.parseInt(split[2]), true));
-                        }
-                    },1L);
-
-
-                }
-            }
-        }
-
-        if (weaponEnchants != null) {
-            for (String s : weaponEnchants) {
-                if (s.contains(":")) {
-                    String[] split = s.split(":");
-                    Enchantment e = Enchantment.getByName(Buffs.getOfficialEnchantmentName(split[0].toUpperCase()));
-                    weap.addUnsafeEnchantment(e, Integer.parseInt(split[1]));
-
-                }
-            }
-        }
-
-        if (weap != null && weaponLore != null){
-            ItemMeta meta = weap.getItemMeta();
-            weaponLore = translateColorCodes(weaponLore);
-            meta.setLore(weaponLore);
-            weap.setItemMeta(meta);
-        }
-        if (weaponName != null){
-            ItemMeta meta = weap.getItemMeta();
-            weaponName = ChatColor.translateAlternateColorCodes('&', weaponName);
-            meta.setDisplayName(weaponName);
-            weap.setItemMeta(meta);
-        }
-
-        player.getInventory().setItem(0, weap);
-        if (items != null){
-            for (ItemStack i : KitManager.parseItems(items)){
-                player.getInventory().addItem(i);
-            }
-
-        }
-
-        player.updateInventory();
-
-        if (getName().equalsIgnoreCase("Freezer")){
-            new AbilityCountdown(180, plugin, player).startFreezerCountdown();
-        }
-        else if (getName().equalsIgnoreCase("Assassin")){
-            new AbilityCountdown(180, plugin, player).startAssassinCountdown();
-        }
-        else if (getName().equalsIgnoreCase("Pyro")){
-            new AbilityCountdown(180, plugin, player).startPyroCountdown();
-        }
-        player.sendMessage(ChatColor.GREEN + "You have been given the " + getName() + " kit.");
-
-    }
-
-
     public static List<String> translateColorCodes(List<String> lore){
 
         List<String> newList = new ArrayList<String>();
@@ -349,4 +250,11 @@ public class Kit {
 
     public String getKitNoPerms() { return kitNoPerms; }
 
+    public ItemStack getKitIcon() {
+        return kitIcon;
+    }
+
+    public void setKitIcon(ItemStack kitIcon) {
+        this.kitIcon = kitIcon;
+    }
 }

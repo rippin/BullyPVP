@@ -12,9 +12,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by EF on 7/3/14.
- */
 public class BleedCountdown {
     private int delay;
     private BullyPVP plugin;
@@ -22,29 +19,31 @@ public class BleedCountdown {
     private Player damager;
     private Player damagee;
     private static List<String> players = new ArrayList<String>();
+    private BleedCountdown thisBleedCountdown;
 
     public BleedCountdown(int delay, BullyPVP plugin, Player damager, Player damagee){
         this.delay = delay;
         this.plugin = plugin;
         this.damager = damager;
         this.damagee = damagee;
+        thisBleedCountdown = this;
 
     }
 
     public void startBleedingCountdown(){
-        final int realDelay = delay;
-        if (players.contains(damager.getUniqueId().toString())){
+        if (players.contains(damagee.getUniqueId().toString())){
             return;
         }
+        players.add(damagee.getUniqueId().toString());
+        BleedCountdownManager.bleedCountdown.put(thisBleedCountdown, damagee.getUniqueId().toString());
         taskid =  plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
             @Override
             public void run() {
 
                 if (damager == null || !damager.isOnline() || damagee == null || !damagee.isOnline()){
-                    cancelTask(taskid);
+                    cancelTask();
                 }
                 else {
-                    players.add(damager.getUniqueId().toString());
                     EntityDamageByEntityEvent event = new EntityDamageByEntityEvent(damager, damagee, EntityDamageEvent.DamageCause.CUSTOM, 2.0);
                     damagee.getWorld().playEffect(damagee.getLocation(), Effect.STEP_SOUND, Material.ICE);
                     damagee.playEffect(EntityEffect.HURT);
@@ -55,16 +54,17 @@ public class BleedCountdown {
 
                 }
                 if (delay <= 0){
-                    cancelTask(taskid);
+                    cancelTask();
                 }
                 --delay;
             }
         }, 0L, 60L);
     }
 
-    public void cancelTask(int taskid){
-        plugin.getServer().getScheduler().cancelTask(taskid);
-        players.remove(damager.getUniqueId().toString());
+    public void cancelTask(){
+        plugin.getServer().getScheduler().cancelTask(this.taskid);
+        players.remove(damagee.getUniqueId().toString());
+        BleedCountdownManager.bleedCountdown.remove(this);
     }
 
 

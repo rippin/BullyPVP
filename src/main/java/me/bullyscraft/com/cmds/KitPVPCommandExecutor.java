@@ -109,13 +109,36 @@ public class KitPVPCommandExecutor implements CommandExecutor {
         else if (cmd.getName().equalsIgnoreCase("reset")){
             if (sender.hasPermission("Kit.Reset")) {
             new ResetStatsCommand(plugin).executeCommand(sender, cmd, args);
+            return true;
             }
             else {
                 helper.noPermission();
             }
+        }
+            else if (cmd.getName().equalsIgnoreCase("unbreaking")){
+                    new UnbreakingCommand(plugin).executeCommand(sender, cmd, args);
+                    return true;
+                }
+            else if (cmd.getName().equalsIgnoreCase("projectileprotection") || cmd.getName().equalsIgnoreCase("projprotect")){
+                new ProjectileProtectCommand(plugin).executeCommand(sender, cmd, args);
+                return true;
+            }
+            else if (cmd.getName().equalsIgnoreCase("fireprotection") || cmd.getName().equalsIgnoreCase("fireprotect")){
+                new FireProtectCommand(plugin).executeCommand(sender, cmd, args);
+                return true;
+            }
+        else if (cmd.getName().equalsIgnoreCase("featherfalling") || cmd.getName().equalsIgnoreCase("fall")){
+            new FeatherFallingCommand(plugin).executeCommand(sender, cmd, args);
             return true;
         }
-
+        else if (cmd.getName().equalsIgnoreCase("purge")){
+            new PurgeCommand(plugin).executeCommand(sender, cmd, args);
+            return true;
+        }
+        else if (cmd.getName().equalsIgnoreCase("kitGui")){
+            new KitGUICommand(plugin).executeCommand(sender, cmd, args);
+            return true;
+        }
 		else{
 			helper.unknownCommand();
 		}

@@ -29,11 +29,11 @@ public class ConsumeItemListener implements Listener {
 			if (event.getItem() != null) {
 				if (event.getItem().getType() == Material.MUSHROOM_SOUP) {
 					event.setCancelled(true);
-					if (player.getHealth() != 20) {
+					if (player.getHealth() != player.getMaxHealth()) {
 						player.setItemInHand(null);
-						double ph = player.getHealth() + 6;
-						if (ph > 20) {
-							ph = 20;
+						double ph = player.getHealth() + 6.0;
+						if (ph > player.getMaxHealth()) {
+							ph = player.getMaxHealth();
 						}
 						player.setHealth(ph);
 						CustomHealthEvent e = new CustomHealthEvent(player);
