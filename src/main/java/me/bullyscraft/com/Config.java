@@ -130,5 +130,7 @@ public class Config {
     public static void reload(){
         config = YamlConfiguration.loadConfiguration(configFile);
         KitManager.reloadKits(plugin);
+        MethodLibs.startcoins = Config.getConfig().getInt("New-Player-Coins");
+        MethodLibs.msg = Config.getConfig().getString("New-Player-Message");
     }
 }
