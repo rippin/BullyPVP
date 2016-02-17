@@ -39,6 +39,13 @@ private BullyPVP plugin;
                 }
             }
         }
+        if (event.getMessage().equalsIgnoreCase("/kitgui")){
+            if (!checkiFPlayerInWGRegion(player.getLocation())){
+                player.sendMessage(ChatColor.RED + "You may only use /kitgui in the spawn.");
+                event.setCancelled(true);
+                return;
+            }
+        }
         else {
             if (event.getMessage().equalsIgnoreCase("/kit")){
                 if (!checkiFPlayerInWGRegion(player.getLocation())){
