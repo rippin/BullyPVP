@@ -41,12 +41,12 @@ public class PlayerStatsObjectManager {
     }
 
     public static void cacheRanking(final long ticks){
-        sorted.clear();
         Bukkit.getServer().getScheduler().runTaskTimerAsynchronously(BullyPVP.instance, new Runnable() {
-            Map<PlayerStatsObject, Double> ratings = new ConcurrentHashMap<PlayerStatsObject, Double>();
             @Override
             public void run() {
-                   for (PlayerStatsObject pso : getAllPlayerStatsObject()){
+                sorted.clear();
+                Map<PlayerStatsObject, Double> ratings = new ConcurrentHashMap<PlayerStatsObject, Double>();
+                for (PlayerStatsObject pso : getAllPlayerStatsObject()){
                        ratings.put(pso, getRating(pso));
                    }
 
@@ -77,7 +77,7 @@ public class PlayerStatsObjectManager {
     }
 
     private static Double getRating(PlayerStatsObject pso){
-      double rating =  pso.getKd() *5 + (pso.getKills() - pso.getDeaths());
+      double rating =  pso.getKd() * 3 + pso.getKills();
         if (pso.getKills() + pso.getKd() + pso.getDeaths() == 0){
             return 0.0;
         }
@@ -96,7 +96,7 @@ public class PlayerStatsObjectManager {
             else {
                 wins = 1;
             }
-            return (rating * (wins/losses));
+            return ((rating* 2) * (wins/losses));
         }
         return rating;
     }

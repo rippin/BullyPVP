@@ -40,7 +40,7 @@ private BullyPVP plugin;
             }
         }
         else {
-            if (event.getMessage().equalsIgnoreCase("/kit")){
+            if (event.getMessage().equalsIgnoreCase("/kit") || event.getMessage().equalsIgnoreCase("/kitgui")){
                 if (!checkiFPlayerInWGRegion(player.getLocation())){
                     player.sendMessage(ChatColor.RED + "You may only use /kit in the spawn.");
                     event.setCancelled(true);

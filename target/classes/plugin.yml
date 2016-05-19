@@ -3,6 +3,7 @@ name: BullyPVP
 author: Rippin/RlPN
 version: 2.0
 description: The official KitPVP plugin used for the BullysCraft server.
+depend: [WorldGuard]
 
 commands:
   setspawn:
@@ -77,3 +78,30 @@ commands:
   top:
     usage: /top
     description: View top player stats.
+  reset:
+    usage: /reset
+    description: Reset your stats.
+  unbreaking:
+    usage: /unbreaking armor or /unbreaking weapon
+    description: Add unbreaking to the item
+  projectileprotection:
+    usage: /projprotec or /projectileprotection
+    description: Add Projectile Protection
+  projprotect:
+    usage: /projprotec or /projectileprotection
+    description: Add Projectile Protection
+  fireprotect:
+    usage: /fireprotection or /fireproect
+    description: Add Fire protection
+  fireprotection:
+    usage: /fireprotection or /fireproect
+    description: Add Fire protection
+  featherfalling:
+    usage: /featherfalling
+    description: Add Falling protection
+  purge:
+    usage: /purge [days]
+    description: Purge old entries from the database.
+  kitGui:
+    usage: /kitGui
+    description: Shows kitGui

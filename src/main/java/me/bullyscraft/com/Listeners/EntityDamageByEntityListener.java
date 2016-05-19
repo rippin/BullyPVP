@@ -9,15 +9,14 @@ import me.bullyscraft.com.Particles.ParticlesHandler;
 import me.bullyscraft.com.Stats.PlayerStatsObject;
 import me.bullyscraft.com.Stats.PlayerStatsObjectManager;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -26,6 +25,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import rippin.bullyscraft.com.ArenaManager;
 import java.util.Random;
+import java.util.UUID;
 
 public class EntityDamageByEntityListener implements Listener {
 
@@ -88,8 +88,6 @@ public class EntityDamageByEntityListener implements Listener {
 			
 			Arrow a = (Arrow) event.getDamager();
 			Location arrowLoc = a.getLocation();
-			
-			
 			if (a.getShooter() instanceof Player){
 				Player damager = (Player) a.getShooter();
                 PlayerStatsObject pso = PlayerStatsObjectManager.getPSO(damager, plugin);
