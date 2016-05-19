@@ -11,6 +11,7 @@ import java.util.LinkedHashMap;
 public class MethodLibs {
     public static final String prefix = (ChatColor.DARK_RED + "[" + ChatColor.GOLD + "BullyPVP" + ChatColor.DARK_RED + "]" + ChatColor.RESET);
     public static String msg = Config.getConfig().getString("New-Player-Message");
+    public static int startcoins = Config.getConfig().getInt("New-Player-Coins");
 
 public static int calculatePriceBuffEnchant(int level, Kit k, String buff ){
 
