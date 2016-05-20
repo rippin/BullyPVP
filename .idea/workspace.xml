@@ -6,69 +6,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3af0df8f-da78-4b72-8b72-83a3222d3931" name="Default" comment="">
-      <change type="DELETED" beforePath="F:\Development\java\BullyPVP\target\classes\me\bullyscraft\com\BarScheduler$1.class" afterPath="" />
-      <change type="DELETED" beforePath="F:\Development\java\BullyPVP\target\classes\me\bullyscraft\com\BullyScoreBoard.class" afterPath="" />
-      <change type="DELETED" beforePath="F:\Development\java\BullyPVP\target\classes\me\bullyscraft\com\Listeners\PlayerChatListener.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/AddCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/AddCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/BarScheduler.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/BarScheduler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Buffs$1.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Buffs$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Buffs.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Buffs.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/BullyPVP.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/BullyPVP.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/BullyPVP.jar" afterPath="$PROJECT_DIR$/target/BullyPVP.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/CoinAlgorithm.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/CoinAlgorithm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/CommandInterface.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/CommandInterface.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Config.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Config.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/ConsumeItemListener.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/ConsumeItemListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/EntityDamageByEntityListener.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/EntityDamageByEntityListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Stats/GetBuffs.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Stats/GetBuffs.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/HelpCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/HelpCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/InventoryClickListener.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/InventoryClickListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Kit$1.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Kit$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Kit.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Kit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/KitCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/KitCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/KitManager.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/KitManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/KitPVPCommandExecutor.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/KitPVPCommandExecutor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/KnockbackCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/KnockbackCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/LoginListener.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/LoginListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MethodLibs.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MethodLibs.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/MySQL$1.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/MySQL$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/MySQL.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/MySQL.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/PlayerDeathListener.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/PlayerDeathListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/PlayerRespawnListener.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Listeners/PlayerRespawnListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Stats/PlayerStatsObject.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Stats/PlayerStatsObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Stats/PlayerStatsObjectManager.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Stats/PlayerStatsObjectManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/PowerCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/PowerCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/ProtectCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/ProtectCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/PunchCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/PunchCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/RefillCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/RefillCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/RefillSoup.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/RefillSoup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/RepairCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/RepairCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$1.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$2.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$3.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$4.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$5.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$6.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/MySQL/SetupTables.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/SharpCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/SharpCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/SpeedCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/SpeedCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/StatsCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/StatsCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/StrengthCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/StrengthCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/TopCommand.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/cmds/TopCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Stats/ViewStats.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Stats/ViewStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Wipe.class" afterPath="$PROJECT_DIR$/target/classes/me/bullyscraft/com/Classes/Wipe.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/original-BullyPVP.jar" afterPath="$PROJECT_DIR$/target/original-BullyPVP.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/BarScheduler.java" afterPath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/BarScheduler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BullyPVP.iml" afterPath="$PROJECT_DIR$/BullyPVP.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/EntityDamageByEntityListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/EntityDamageByEntityListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/PlayerCommandListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/PlayerCommandListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Stats/PlayerStatsObjectManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Stats/PlayerStatsObjectManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Kit.java" afterPath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Kit.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Wipe.java" afterPath="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Wipe.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/plugin.yml" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BullyPVP.iws" />
@@ -131,103 +82,133 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CustomHealthEvent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Events/CustomHealthEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+              <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BullyPVP.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/BullyPVP.java">
+      <file leaf-file-name="PlayerCommandListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/PlayerCommandListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+              <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarScheduler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/BarScheduler.java">
+      <file leaf-file-name="EntityDamageByEntityListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/EntityDamageByEntityListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
+              <caret line="155" column="2" selection-start-line="155" selection-start-column="2" selection-end-line="155" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#7169#7170#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MethodLibs.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/MethodLibs.java">
+      <file leaf-file-name="LoginListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/LoginListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Spawn.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Spawn.java">
+      <file leaf-file-name="InventoryClickListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/InventoryClickListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoinAlgorithm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/CoinAlgorithm.java">
+      <file leaf-file-name="KitManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/KitManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Config.java">
+      <file leaf-file-name="KitGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/KitGUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="23" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
+              <caret line="16" column="68" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpawnManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/SpawnManager.java">
+      <file leaf-file-name="Kit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Kit.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
+              <caret line="169" column="91" selection-start-line="169" selection-start-column="91" selection-end-line="169" selection-end-column="91" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#740#757#0" expanded="false" />
+                <element signature="e#842#858#0" expanded="false" />
+                <element signature="e#908#916#0" expanded="false" />
+                <element signature="e#1032#1040#0" expanded="false" />
+                <element signature="e#1095#1103#0" expanded="false" />
+                <element signature="e#1161#1169#0" expanded="false" />
+                <element signature="e#1223#1231#0" expanded="false" />
+                <element signature="e#1283#1291#0" expanded="false" />
+                <element signature="e#1349#1360#0" expanded="false" />
+                <element signature="e#4539#4540#0" expanded="false" />
+                <element signature="e#4569#4570#0" expanded="false" />
+                <element signature="e#4674#4675#0" expanded="false" />
+                <element signature="e#4702#4703#0" expanded="false" />
+                <element signature="e#4796#4797#0" expanded="false" />
+                <element signature="e#4826#4827#0" expanded="false" />
+                <element signature="e#5364#5375#0" expanded="false" />
+                <element signature="e#9288#9296#0" expanded="false" />
+                <element signature="e#9547#9548#0" expanded="false" />
+                <element signature="e#9577#9578#0" expanded="false" />
+                <element signature="e#9617#9618#0" expanded="false" />
+                <element signature="e#9654#9655#0" expanded="false" />
+                <element signature="e#9749#9750#0" expanded="false" />
+                <element signature="e#9779#9780#0" expanded="false" />
+                <element signature="e#9828#9829#0" expanded="false" />
+                <element signature="e#9866#9867#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParticlesHandler.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Particles/ParticlesHandler.java">
+      <file leaf-file-name="GivePotion.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/GivePotion.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Wipe.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Wipe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.0390517">
+              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -251,8 +232,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/BarScheduler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Kit.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/EntityDamageByEntityListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Wipe.java" />
       </list>
     </option>
   </component>
@@ -1086,7 +1070,13 @@
       <option name="project" value="LOCAL" />
       <updated>1422910512119</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Updated to 1.9.4">
+      <created>1463639913272</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1463639913272</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1111,7 +1101,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1120,22 +1110,22 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48998666" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22797927" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29637527" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21162046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24892704" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39892906" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39892906" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35609102" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1124498" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29490617" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1199,7 +1189,9 @@
     <MESSAGE value="More kit compatibility." />
     <MESSAGE value="Working towards 2.0 more.&#10;" />
     <MESSAGE value="First commit for ranking addition.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit for ranking addition.&#10;" />
+    <MESSAGE value="Updated to 1.9.4" />
+    <MESSAGE value="Fixed some 1.9.4 problems." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some 1.9.4 problems." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1212,27 +1204,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/AbilityCountdowns/BleedCountdownManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="4" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/AbilityCountdowns/BleedCountdown.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="64" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/GivePotion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/cmds/KitCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1275,27 +1246,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Kit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="87" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/KitManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="5" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/KitGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="68" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Stats/GetBuffs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1321,13 +1271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/InventoryClickListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="27" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1409,13 +1352,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/LoginListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="98" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/cmds/TopCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1472,25 +1408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/PlayerCommandListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="81" selection-start-line="42" selection-start-column="81" selection-end-line="42" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/EntityDamageByEntityListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1198#1199#0" expanded="false" />
-            <element signature="e#1225#1226#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Events/CacheRankingEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1521,28 +1438,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/BarScheduler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/MethodLibs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1566,7 +1473,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="23" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
+          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1582,7 +1489,131 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Particles/ParticlesHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <caret line="14" column="143" selection-start-line="14" selection-start-column="143" selection-end-line="14" selection-end-column="143" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/RefillSoup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/GivePotion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Kit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="169" column="91" selection-start-line="169" selection-start-column="91" selection-end-line="169" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#740#757#0" expanded="false" />
+            <element signature="e#842#858#0" expanded="false" />
+            <element signature="e#908#916#0" expanded="false" />
+            <element signature="e#1032#1040#0" expanded="false" />
+            <element signature="e#1095#1103#0" expanded="false" />
+            <element signature="e#1161#1169#0" expanded="false" />
+            <element signature="e#1223#1231#0" expanded="false" />
+            <element signature="e#1283#1291#0" expanded="false" />
+            <element signature="e#1349#1360#0" expanded="false" />
+            <element signature="e#4539#4540#0" expanded="false" />
+            <element signature="e#4569#4570#0" expanded="false" />
+            <element signature="e#4674#4675#0" expanded="false" />
+            <element signature="e#4702#4703#0" expanded="false" />
+            <element signature="e#4796#4797#0" expanded="false" />
+            <element signature="e#4826#4827#0" expanded="false" />
+            <element signature="e#5364#5375#0" expanded="false" />
+            <element signature="e#9288#9296#0" expanded="false" />
+            <element signature="e#9547#9548#0" expanded="false" />
+            <element signature="e#9577#9578#0" expanded="false" />
+            <element signature="e#9617#9618#0" expanded="false" />
+            <element signature="e#9654#9655#0" expanded="false" />
+            <element signature="e#9749#9750#0" expanded="false" />
+            <element signature="e#9779#9780#0" expanded="false" />
+            <element signature="e#9828#9829#0" expanded="false" />
+            <element signature="e#9866#9867#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/PlayerCommandListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/EntityDamageByEntityListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="155" column="2" selection-start-line="155" selection-start-column="2" selection-end-line="155" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7169#7170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/KitManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/InventoryClickListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Listeners/LoginListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/KitGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="68" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/bullyscraft/com/Classes/Wipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.0390517">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
           <folding />
         </state>
       </provider>

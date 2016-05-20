@@ -19,6 +19,7 @@ public class Wipe {
 		PlayerInventory inv = player.getInventory();
         inv.clear();
 		inv.setArmorContents(null);
+        inv.setExtraContents(null);
 		player.setExp(0);
 		player.setLevel(0);
 		player.setHealth(player.getMaxHealth());
@@ -85,6 +86,7 @@ public class Wipe {
                 }
             }
             inv.setArmorContents(null);
+            inv.setExtraContents(null);
 
         for(PotionEffect pe : player.getActivePotionEffects()){
             player.removePotionEffect(pe.getType());

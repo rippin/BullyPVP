@@ -25,7 +25,6 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import rippin.bullyscraft.com.ArenaManager;
 import java.util.Random;
-import java.util.UUID;
 
 public class EntityDamageByEntityListener implements Listener {
 
@@ -153,7 +152,7 @@ public class EntityDamageByEntityListener implements Listener {
                        final Material m = loc.getBlock().getType();
                         damaged.setMetadata("assassin", new FixedMetadataValue(plugin, ""));
                        loc.getBlock().setType(Material.WEB);
-                       plugin.getServer().getScheduler().runTaskLater(plugin, new BukkitRunnable() {
+                       plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
                            @Override
                            public void run() {
                                loc.getBlock().setType(m);
@@ -195,8 +194,7 @@ public class EntityDamageByEntityListener implements Listener {
         if (plugin.getWorldGuard() == null){
             return false;
         }
-        ApplicableRegionSet ars = plugin.getWorldGuard().
-                getRegionManager(loc.getWorld()).getApplicableRegions(loc);
+        ApplicableRegionSet ars = plugin.getWorldGuard().getRegionManager(loc.getWorld()).getApplicableRegions(loc);
         for (ProtectedRegion pr : ars){
             if (pr.getId().contains("spawn")){
                 return true;

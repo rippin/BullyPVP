@@ -168,7 +168,6 @@ public class Kit {
                 if (s.contains(":")) {
                     final String[] split = s.split(":");
                     plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
-                        @Override
                         public void run() {
                             player.addPotionEffect(new PotionEffect(PotionEffectType.getByName(Buffs.getOfficialPotionName(split[0])),
                                     Integer.parseInt(split[1]), Integer.parseInt(split[2]), true));
